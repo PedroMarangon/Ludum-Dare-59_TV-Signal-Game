@@ -2,7 +2,13 @@
 
 [ext_resource type="Script" uid="uid://c0akcfdmi7okf" path="res://scripts/tv_antenna.gd" id="1_usm7i"]
 [ext_resource type="Texture2D" uid="uid://diy6lxlnbux18" path="res://icon.svg" id="2_ewu38"]
+[ext_resource type="Script" uid="uid://dhg1muh52x5l0" path="res://scripts/interest.gd" id="2_yj5mq"]
 [ext_resource type="Shader" uid="uid://do0up1f5a4i4i" path="res://shaders/tv_signal.gdshader" id="3_ewu38"]
+[ext_resource type="Resource" uid="uid://cuunrvnmb6oym" path="res://resources/interest_cartoon.tres" id="3_gefff"]
+[ext_resource type="Resource" uid="uid://c6bpd28kldre7" path="res://resources/interest_cooking.tres" id="4_seoob"]
+[ext_resource type="Resource" uid="uid://beveyt2dp5b3y" path="res://resources/interest_drama.tres" id="5_xb6rf"]
+[ext_resource type="Resource" uid="uid://mnny2q74ljs5" path="res://resources/interest_movie.tres" id="6_s03wv"]
+[ext_resource type="Resource" uid="uid://bdi2y86je80oh" path="res://resources/interest_sports.tres" id="7_tx3su"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_aq5bu"]
 shader = ExtResource("3_ewu38")
@@ -10,7 +16,8 @@ shader_parameter/offset = Vector2(0, -0.5)
 shader_parameter/angle = 15.0
 shader_parameter/angle_edge = 3.0
 shader_parameter/ring_frequency = 600.0
-shader_parameter/move_speed = -50.0
+shader_parameter/ring_width = 0.90000004275
+shader_parameter/move_speed = -10.0
 shader_parameter/smooth_edge = true
 shader_parameter/smooth_edge_angle = true
 
@@ -22,8 +29,10 @@ scale = Vector2(0.2, 0.2)
 script = ExtResource("1_usm7i")
 angle = 80.0
 speed = 300.0
+acceptable_interests = Array[ExtResource("2_yj5mq")]([ExtResource("3_gefff"), ExtResource("4_seoob"), ExtResource("5_xb6rf"), ExtResource("6_s03wv"), ExtResource("7_tx3su")])
 
 [node name="TV_SpriteShader" type="Sprite2D" parent="." unique_id=478369552]
+unique_name_in_owner = true
 material = SubResource("ShaderMaterial_aq5bu")
 position = Vector2(0, -3019.9998)
 scale = Vector2(47, 47)
@@ -39,15 +48,18 @@ collision_mask = 2
 polygon = PackedVector2Array(0, 0, -175, -975, 0, -1000, 175, -975)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1846191870]
+unique_name_in_owner = true
 texture = ExtResource("2_ewu38")
 
-[node name="Area2D" type="Area2D" parent="Sprite2D" unique_id=512800526]
+[node name="MouseDetection" type="Area2D" parent="Sprite2D" unique_id=512800526]
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D" unique_id=1994333442]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/MouseDetection" unique_id=1994333442]
 shape = SubResource("RectangleShape2D_e2o6t")
 
 [connection signal="area_entered" from="TV_SpriteShader/TV_Area2D" to="." method="_on_tv_signal_area_entered"]
 [connection signal="area_exited" from="TV_SpriteShader/TV_Area2D" to="." method="_on_tv_signal_area_exited"]
-[connection signal="input_event" from="Sprite2D/Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="input_event" from="Sprite2D/MouseDetection" to="." method="_on_mouse_detection_input_event"]
+[connection signal="mouse_entered" from="Sprite2D/MouseDetection" to="." method="_on_mouse_detection_mouse_entered"]
+[connection signal="mouse_exited" from="Sprite2D/MouseDetection" to="." method="_on_mouse_detection_mouse_exited"]

@@ -2,10 +2,11 @@ shader_type canvas_item;
 render_mode blend_mix;
 
 uniform vec2 offset = vec2(0,0);
-uniform float angle = 45;
+uniform float angle :hint_range(0.0, 360.0, 1.0) = 45.0;
 uniform float angle_edge : hint_range(0.0, 10.0, 0.1)  = 3.0;
 
 uniform float ring_frequency = 50.0;
+uniform float ring_width :hint_range(0.0, 0.999, 0.001) = 0.99;
 
 uniform float move_speed = -10.0;
 uniform bool smooth_edge = false;
@@ -46,7 +47,7 @@ void fragment() {
 	float dist = distance(UV + offset, vec2(0.5,0.5));
 	float rings = sin(dist * ring_frequency + (TIME * move_speed));
 	
-	rings = step(0.99, rings);
+	rings = step(ring_width, rings);
 	float blend_alpha = smoothstep(0.5, 0.4, dist);
 	
 	
