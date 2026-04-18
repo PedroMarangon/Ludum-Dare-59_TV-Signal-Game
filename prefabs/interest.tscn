@@ -10,6 +10,7 @@ shader_parameter/offset = Vector2(0, 0)
 shader_parameter/angle = 360.0
 shader_parameter/angle_edge = 3.0
 shader_parameter/ring_frequency = 100.0
+shader_parameter/ring_width = 0.99
 shader_parameter/move_speed = -10.0
 shader_parameter/smooth_edge = true
 shader_parameter/smooth_edge_angle = false

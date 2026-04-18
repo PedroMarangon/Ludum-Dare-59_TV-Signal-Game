@@ -30,22 +30,27 @@ script = ExtResource("1_usm7i")
 angle = 80.0
 speed = 300.0
 acceptable_interests = Array[ExtResource("2_yj5mq")]([ExtResource("3_gefff"), ExtResource("4_seoob"), ExtResource("5_xb6rf"), ExtResource("6_s03wv"), ExtResource("7_tx3su")])
+non_selected_alpha = 0.2
+selected_alpha = 0.5
 
-[node name="TV_SpriteShader" type="Sprite2D" parent="." unique_id=478369552]
+[node name="Node2D" type="Node2D" parent="." unique_id=1247116552]
+scale = Vector2(2, 2)
+
+[node name="TV_SpriteShader" type="Sprite2D" parent="Node2D" unique_id=478369552]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_aq5bu")
-position = Vector2(0, -3019.9998)
-scale = Vector2(47, 47)
+position = Vector2(0, -1600.0001)
+scale = Vector2(25, 25)
 texture = ExtResource("2_ewu38")
 
-[node name="TV_Area2D" type="Area2D" parent="TV_SpriteShader" unique_id=98487875]
+[node name="TV_Area2D" type="Area2D" parent="Node2D/TV_SpriteShader" unique_id=98487875]
 position = Vector2(0, 64.25532)
 scale = Vector2(0.06382978, 0.06382978)
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TV_SpriteShader/TV_Area2D" unique_id=444996445]
-polygon = PackedVector2Array(0, 0, -175, -975, 0, -1000, 175, -975)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/TV_SpriteShader/TV_Area2D" unique_id=444996445]
+polygon = PackedVector2Array(0, 0, -137.8667, -918.9334, -125.33336, -956.5334, -87.73335, -969.0667, -50.133343, -981.60004, 0, -986.30005, 50.133343, -980.0334, 87.73335, -969.0667, 125.33336, -956.5334, 139.43336, -918.9334)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1846191870]
 unique_name_in_owner = true
@@ -58,8 +63,8 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/MouseDetection" unique_id=1994333442]
 shape = SubResource("RectangleShape2D_e2o6t")
 
-[connection signal="area_entered" from="TV_SpriteShader/TV_Area2D" to="." method="_on_tv_signal_area_entered"]
-[connection signal="area_exited" from="TV_SpriteShader/TV_Area2D" to="." method="_on_tv_signal_area_exited"]
+[connection signal="area_entered" from="Node2D/TV_SpriteShader/TV_Area2D" to="." method="_on_tv_signal_area_entered"]
+[connection signal="area_exited" from="Node2D/TV_SpriteShader/TV_Area2D" to="." method="_on_tv_signal_area_exited"]
 [connection signal="input_event" from="Sprite2D/MouseDetection" to="." method="_on_mouse_detection_input_event"]
 [connection signal="mouse_entered" from="Sprite2D/MouseDetection" to="." method="_on_mouse_detection_mouse_entered"]
 [connection signal="mouse_exited" from="Sprite2D/MouseDetection" to="." method="_on_mouse_detection_mouse_exited"]

@@ -1,8 +1,14 @@
 [gd_resource type="Resource" script_class="Interest" format=3 uid="uid://cuunrvnmb6oym"]
 
 [ext_resource type="Script" uid="uid://dhg1muh52x5l0" path="res://scripts/interest.gd" id="1_qh31r"]
+[ext_resource type="Texture2D" uid="uid://djuy5yvbwang1" path="res://assets/sprites.png" id="1_r8id6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3tq7w"]
+atlas = ExtResource("1_r8id6")
+region = Rect2(512, 0, 256, 256)
 
 [resource]
 script = ExtResource("1_qh31r")
 interest_name = "Cartoons"
+icon = SubResource("AtlasTexture_3tq7w")
 metadata/_custom_type_script = "uid://dhg1muh52x5l0"

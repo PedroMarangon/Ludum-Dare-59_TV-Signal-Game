@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://tqvckvutc3s7"]
+
+[ext_resource type="Texture2D" uid="uid://cgn8646i41vre" path="res://assets/house.png" id="1_25t6t"]
+
+[node name="House" type="Node2D" unique_id=1085918880]
+
+[node name="Walls" type="Sprite2D" parent="." unique_id=51530623]
+texture = ExtResource("1_25t6t")
+hframes = 2
+vframes = 2
+frame = 2
+
+[node name="Details" type="Sprite2D" parent="." unique_id=1699545253]
+texture = ExtResource("1_25t6t")
+hframes = 2
+vframes = 2
+frame = 1
+
+[node name="Roof" type="Sprite2D" parent="." unique_id=1971170891]
+texture = ExtResource("1_25t6t")
+hframes = 2
+vframes = 2
