@@ -1,0 +1,178 @@
+[gd_scene format=3 uid="uid://blb8kba4uy581"]
+
+[ext_resource type="PackedScene" uid="uid://t24aig2usx7l" path="res://player.tscn" id="1_80nbo"]
+[ext_resource type="Texture2D" uid="uid://diy6lxlnbux18" path="res://icon.svg" id="2_e2o6t"]
+[ext_resource type="Script" uid="uid://cl0ra1pwkpyto" path="res://interest.gd" id="3_feb5d"]
+
+[sub_resource type="GDScript" id="GDScript_80nbo"]
+resource_name = "clicking_test"
+script/source = "extends Node2D
+
+@export var angle :float = 45
+@export var speed :float = 50.0
+
+@onready var sprite_2d: Sprite2D = $Sprite2D
+
+var is_holding:bool = false
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		var mouse = event as InputEventMouseButton
+		if mouse.is_released() and mouse.button_index == MOUSE_BUTTON_LEFT and is_holding:
+			print(\"Stopped holding\")
+			is_holding = false
+
+
+func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
+	if event is InputEventMouseButton:
+		var mouse = event as InputEventMouseButton
+		if mouse.pressed and mouse.button_index == MOUSE_BUTTON_LEFT:
+			print(\"holding on sprite\")
+			is_holding = true
+
+func _process(delta: float) -> void:
+	if not is_holding:
+		return
+	var mouse_x :float = get_global_mouse_position().x
+	var my_x :float = global_position.x
+	
+	
+	rotation_degrees = move_toward(rotation_degrees, clampf(mouse_x - my_x, -angle, angle), delta * speed)
+	
+
+
+
+func _on_tv_signal_area_entered(area: Area2D) -> void:
+	if area is Interest:
+			var interest = area as Interest
+			print(interest.interest_name, \" ENTER\")
+
+
+func _on_tv_signal_area_exited(area: Area2D) -> void:
+	if area is Interest:
+			var interest = area as Interest
+			print(interest.interest_name, \" EXIT\")
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e2o6t"]
+size = Vector2(128, 128)
+
+[node name="Node2D" type="Node2D" unique_id=867534550]
+
+[node name="CharacterBody2D" parent="." unique_id=1177946813 instance=ExtResource("1_80nbo")]
+visible = false
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1101897568]
+zoom = Vector2(2, 2)
+
+[node name="Node2D" type="Node2D" parent="." unique_id=2095445208]
+position = Vector2(0, 13)
+scale = Vector2(0.2, 0.2)
+script = SubResource("GDScript_80nbo")
+speed = 100.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D" unique_id=675396595]
+texture = ExtResource("2_e2o6t")
+
+[node name="Area2D" type="Area2D" parent="Node2D/Sprite2D" unique_id=278947619]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Sprite2D/Area2D" unique_id=1571633492]
+shape = SubResource("RectangleShape2D_e2o6t")
+
+[node name="Polygon2D" type="Polygon2D" parent="Node2D" unique_id=1902947574]
+z_index = -1
+scale = Vector2(3, 3)
+polygon = PackedVector2Array(0, 0, -100, -1000, 100, -1000)
+
+[node name="Area2D" type="Area2D" parent="Node2D/Polygon2D" unique_id=753935610]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/Polygon2D/Area2D" unique_id=621512299]
+polygon = PackedVector2Array(0, 0, -100, -1000, 100, -1000)
+
+[node name="Interest" type="Area2D" parent="." unique_id=307768691]
+position = Vector2(-160, -120)
+scale = Vector2(0.19999999, 0.19999999)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_feb5d")
+interest_name = "Movies"
+
+[node name="Sprite2D" type="Sprite2D" parent="Interest" unique_id=1287508169]
+modulate = Color(0.46099997, 1, 0.23000002, 1)
+scale = Vector2(1.0000001, 1.0000001)
+texture = ExtResource("2_e2o6t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interest" unique_id=1651405587]
+shape = SubResource("RectangleShape2D_e2o6t")
+
+[node name="Interest2" type="Area2D" parent="." unique_id=2091152630]
+position = Vector2(208, -136)
+scale = Vector2(0.19999999, 0.19999999)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_feb5d")
+interest_name = "Cartoons"
+
+[node name="Sprite2D" type="Sprite2D" parent="Interest2" unique_id=2039231548]
+modulate = Color(0.46099997, 1, 0.23000002, 1)
+scale = Vector2(1.0000001, 1.0000001)
+texture = ExtResource("2_e2o6t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interest2" unique_id=94005417]
+shape = SubResource("RectangleShape2D_e2o6t")
+
+[node name="Interest3" type="Area2D" parent="." unique_id=2079571451]
+position = Vector2(64.000015, -136)
+scale = Vector2(0.19999999, 0.19999999)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_feb5d")
+interest_name = "Cooking"
+
+[node name="Sprite2D" type="Sprite2D" parent="Interest3" unique_id=1885469739]
+modulate = Color(0.46099997, 1, 0.23000002, 1)
+scale = Vector2(1.0000001, 1.0000001)
+texture = ExtResource("2_e2o6t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interest3" unique_id=68168917]
+shape = SubResource("RectangleShape2D_e2o6t")
+
+[node name="Interest4" type="Area2D" parent="." unique_id=656938614]
+position = Vector2(264, -32)
+scale = Vector2(0.19999999, 0.19999999)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_feb5d")
+interest_name = "Sports"
+
+[node name="Sprite2D" type="Sprite2D" parent="Interest4" unique_id=595740388]
+modulate = Color(0.46099997, 1, 0.23000002, 1)
+scale = Vector2(1.0000001, 1.0000001)
+texture = ExtResource("2_e2o6t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interest4" unique_id=2125805682]
+shape = SubResource("RectangleShape2D_e2o6t")
+
+[node name="Interest5" type="Area2D" parent="." unique_id=339630234]
+position = Vector2(-256, -112)
+scale = Vector2(0.19999999, 0.19999999)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_feb5d")
+interest_name = "Drama"
+
+[node name="Sprite2D" type="Sprite2D" parent="Interest5" unique_id=587960030]
+modulate = Color(0.46099997, 1, 0.23000002, 1)
+scale = Vector2(1.0000001, 1.0000001)
+texture = ExtResource("2_e2o6t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interest5" unique_id=290692257]
+shape = SubResource("RectangleShape2D_e2o6t")
+
+[connection signal="input_event" from="Node2D/Sprite2D/Area2D" to="Node2D" method="_on_area_2d_input_event"]
+[connection signal="area_entered" from="Node2D/Polygon2D/Area2D" to="Node2D" method="_on_tv_signal_area_entered"]
+[connection signal="area_exited" from="Node2D/Polygon2D/Area2D" to="Node2D" method="_on_tv_signal_area_exited"]
