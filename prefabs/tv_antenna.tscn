@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://dj7hrroalnam7"]
+
+[ext_resource type="Script" uid="uid://c0akcfdmi7okf" path="res://scripts/tv_antenna.gd" id="1_usm7i"]
+[ext_resource type="Texture2D" uid="uid://diy6lxlnbux18" path="res://icon.svg" id="2_ewu38"]
+[ext_resource type="Shader" uid="uid://do0up1f5a4i4i" path="res://shaders/tv_signal.gdshader" id="3_ewu38"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e2o6t"]
+size = Vector2(128, 128)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ewu38"]
+shader = ExtResource("3_ewu38")
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/angle = 45.0
+shader_parameter/angle_edge = 3.0
+shader_parameter/ring_frequency = 50.0
+shader_parameter/move_speed = -10.0
+shader_parameter/smooth_edge = false
+shader_parameter/smooth_edge_angle = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aq5bu"]
+shader = ExtResource("3_ewu38")
+shader_parameter/offset = Vector2(0, -0.5)
+shader_parameter/angle = 15.0
+shader_parameter/angle_edge = 3.0
+shader_parameter/ring_frequency = 600.0
+shader_parameter/move_speed = -50.0
+shader_parameter/smooth_edge = true
+shader_parameter/smooth_edge_angle = true
+
+[node name="TV_Antenna" type="Node2D" unique_id=1073357383]
+scale = Vector2(0.2, 0.2)
+script = ExtResource("1_usm7i")
+angle = 80.0
+speed = 300.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1846191870]
+texture = ExtResource("2_ewu38")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D" unique_id=512800526]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D" unique_id=1994333442]
+shape = SubResource("RectangleShape2D_e2o6t")
+
+[node name="TV_Polygon" type="Polygon2D" parent="." unique_id=456756873]
+visible = false
+z_index = -1
+material = SubResource("ShaderMaterial_ewu38")
+scale = Vector2(3, 3)
+polygon = PackedVector2Array(0, 0, -100, -1000, 100, -1000)
+
+[node name="TV_SpriteShader" type="Sprite2D" parent="." unique_id=478369552]
+material = SubResource("ShaderMaterial_aq5bu")
+position = Vector2(0, -3020)
+scale = Vector2(47, 47)
+texture = ExtResource("2_ewu38")
+
+[node name="TV_Area2D" type="Area2D" parent="TV_SpriteShader" unique_id=98487875]
+visible = false
+position = Vector2(0, 64.25532)
+scale = Vector2(0.06382978, 0.06382978)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TV_SpriteShader/TV_Area2D" unique_id=444996445]
+polygon = PackedVector2Array(0, 0, -131.66667, -1000.00006, 131.66667, -1000.00006)
+
+[connection signal="input_event" from="Sprite2D/Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="area_entered" from="TV_SpriteShader/TV_Area2D" to="." method="_on_tv_signal_area_entered"]
+[connection signal="area_exited" from="TV_SpriteShader/TV_Area2D" to="." method="_on_tv_signal_area_exited"]

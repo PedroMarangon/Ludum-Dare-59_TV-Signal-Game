@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://blb8kba4uy581"]
+
+[ext_resource type="PackedScene" uid="uid://dj7hrroalnam7" path="res://prefabs/tv_antenna.tscn" id="1_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://wo721h5vxll1" path="res://prefabs/interest.tscn" id="3_lnu2h"]
+
+[node name="Node2D" type="Node2D" unique_id=867534550]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1101897568]
+
+[node name="TV_Antenna" parent="." unique_id=1073357383 instance=ExtResource("1_yqjtg")]
+position = Vector2(0, 13)
+
+[node name="Interest" parent="." unique_id=19260816 instance=ExtResource("3_lnu2h")]
+position = Vector2(-160, -80)
