@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Interest" format=3 uid="uid://bdi2y86je80oh"]
+
+[ext_resource type="Script" uid="uid://dhg1muh52x5l0" path="res://scripts/interest.gd" id="1_gt5ft"]
+
+[resource]
+script = ExtResource("1_gt5ft")
+interest_name = "Sports"
+metadata/_custom_type_script = "uid://dhg1muh52x5l0"

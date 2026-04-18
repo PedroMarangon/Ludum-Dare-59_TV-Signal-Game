@@ -46,7 +46,7 @@ void fragment() {
 	float dist = distance(UV + offset, vec2(0.5,0.5));
 	float rings = sin(dist * ring_frequency + (TIME * move_speed));
 	
-	rings = step(0.9, rings);
+	rings = step(0.99, rings);
 	float blend_alpha = smoothstep(0.5, 0.4, dist);
 	
 	

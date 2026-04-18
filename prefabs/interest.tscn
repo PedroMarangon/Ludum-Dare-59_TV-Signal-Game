@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://wo721h5vxll1"]
 
-[ext_resource type="Script" uid="uid://cl0ra1pwkpyto" path="res://scripts/interest.gd" id="1_6ry06"]
+[ext_resource type="Script" uid="uid://cl0ra1pwkpyto" path="res://scripts/interest_channel.gd" id="1_6ry06"]
 [ext_resource type="Texture2D" uid="uid://diy6lxlnbux18" path="res://icon.svg" id="2_3l7xn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e2o6t"]
 size = Vector2(128, 128)
 
-[node name="Interest" type="Area2D" unique_id=19260816]
+[node name="InterestChannel" type="Area2D" unique_id=19260816]
 scale = Vector2(0.19999999, 0.19999999)
 collision_layer = 2
 collision_mask = 2
