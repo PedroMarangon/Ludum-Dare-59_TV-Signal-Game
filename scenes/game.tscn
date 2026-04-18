@@ -12,7 +12,7 @@
 [node name="Node2D" type="Node2D" unique_id=867534550]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1101897568]
-zoom = Vector2(1.5, 1.5)
+position = Vector2(0, 72)
 
 [node name="TV_Antenna" parent="." unique_id=1073357383 instance=ExtResource("1_yqjtg")]
 position = Vector2(-7.9999995, 121.99999)
@@ -27,7 +27,7 @@ position = Vector2(216, 112.00001)
 acceptable_interests = Array[ExtResource("3_feb5d")]([ExtResource("6_0tnpc"), ExtResource("3_lbhrr"), ExtResource("5_gee14")])
 
 [node name="InterestChannel" parent="." unique_id=19260816 instance=ExtResource("3_lnu2h")]
-position = Vector2(-200.00003, -80)
+position = Vector2(-288, -104.00001)
 interest = ExtResource("3_lbhrr")
 
 [node name="InterestChannel2" parent="." unique_id=2080618144 instance=ExtResource("3_lnu2h")]
@@ -39,9 +39,9 @@ position = Vector2(112, -184)
 interest = ExtResource("5_gee14")
 
 [node name="InterestChannel4" parent="." unique_id=1328126157 instance=ExtResource("3_lnu2h")]
-position = Vector2(-368, -152)
+position = Vector2(-8.000004, -200)
 interest = ExtResource("6_0tnpc")
 
 [node name="InterestChannel5" parent="." unique_id=72220851 instance=ExtResource("3_lnu2h")]
-position = Vector2(-120, -168)
+position = Vector2(-144, -192)
 interest = ExtResource("7_vtaks")

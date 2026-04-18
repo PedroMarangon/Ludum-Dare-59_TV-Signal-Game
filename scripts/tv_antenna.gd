@@ -16,6 +16,7 @@ signal stopped_holding
 
 @onready var sprite_2d: Sprite2D = %Sprite2D
 @onready var tv_signal_sprite: Sprite2D = %TV_SpriteShader
+@onready var head: Marker2D = %Head
 
 var is_holding:bool = false
 
@@ -41,7 +42,7 @@ func update_rotation(delta:float) -> void:
 		return
 	
 	var target_rotation :float = clampf(get_global_mouse_position().x - global_position.x, -angle, angle)
-	rotation_degrees = move_toward(rotation_degrees, target_rotation, delta * speed)
+	head.rotation_degrees = move_toward(head.rotation_degrees, target_rotation, delta * speed)
 
 
 func select_random_interest() -> void:
@@ -59,7 +60,10 @@ func set_color(interest_channel:InterestChannel, is_entering:bool) -> void:
 	tv_signal_sprite.modulate = correct_signal_color if interest_channel.interest == current_interest else wrong_signal_color
 
 func set_alpha(is_selected:bool) -> void:
-	tv_signal_sprite.self_modulate.a = selected_alpha if is_selected else non_selected_alpha
+	var color :Color = Color(Color.WHITE, selected_alpha if is_selected else non_selected_alpha)
+	
+	var tween = get_tree().create_tween()
+	tween.tween_property(tv_signal_sprite, "self_modulate", color, 0.1)
 
 #region Signal Connections
 func _on_mouse_detection_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
