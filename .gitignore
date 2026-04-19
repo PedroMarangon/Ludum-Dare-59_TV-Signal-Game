@@ -3,6 +3,11 @@
 .nomedia
 /android/
 
+#Audacity
+*.aup3
+*.aup3-shm
+*.aup3-wal
+
 # Godot-specific ignores
 .import/
 export.cfg

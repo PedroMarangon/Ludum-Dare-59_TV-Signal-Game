@@ -14,6 +14,7 @@
 [ext_resource type="Theme" uid="uid://db58y20hoehp8" path="res://theme.tres" id="12_7jp70"]
 [ext_resource type="Texture2D" uid="uid://ceecp4u6v3yug" path="res://assets/logos/logo.png" id="13_7jp70"]
 [ext_resource type="Texture2D" uid="uid://cgtxohupn63b0" path="res://assets/logos/logoCompany_WhiteVersion_Border.png" id="14_7jp70"]
+[ext_resource type="Script" uid="uid://cf251xbsa753y" path="res://scripts/ButtonSFX.gd" id="14_g6gyw"]
 [ext_resource type="AudioStream" uid="uid://b54pdodvuy534" path="res://assets/sfx/nighttime.ogg" id="15_7jp70"]
 
 [sub_resource type="Gradient" id="Gradient_vtaks"]
@@ -614,13 +615,25 @@ layout_mode = 2
 layout_mode = 2
 text = "Play"
 
+[node name="ButtonSFX" type="Node" parent="CanvasLayer/MenuContainer/MarginContainer/VBoxContainer/PlayBtn" unique_id=152311620]
+script = ExtResource("14_g6gyw")
+metadata/_custom_type_script = "uid://cf251xbsa753y"
+
 [node name="HowToPlayBtn" type="Button" parent="CanvasLayer/MenuContainer/MarginContainer/VBoxContainer" unique_id=1161931946]
 layout_mode = 2
 text = "How to Play"
 
+[node name="ButtonSFX" type="Node" parent="CanvasLayer/MenuContainer/MarginContainer/VBoxContainer/HowToPlayBtn" unique_id=1828699113]
+script = ExtResource("14_g6gyw")
+metadata/_custom_type_script = "uid://cf251xbsa753y"
+
 [node name="QuitBtn" type="Button" parent="CanvasLayer/MenuContainer/MarginContainer/VBoxContainer" unique_id=379176489]
 layout_mode = 2
 text = "Quit"
+
+[node name="ButtonSFX" type="Node" parent="CanvasLayer/MenuContainer/MarginContainer/VBoxContainer/QuitBtn" unique_id=1948063492]
+script = ExtResource("14_g6gyw")
+metadata/_custom_type_script = "uid://cf251xbsa753y"
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=2040406218]
 anchors_preset = 3
@@ -693,6 +706,10 @@ offset_bottom = 583.0
 grow_horizontal = 0
 theme = ExtResource("12_7jp70")
 text = "Close"
+
+[node name="ButtonSFX" type="Node" parent="CanvasLayer/TutorialContainer/Control/Button" unique_id=380679173]
+script = ExtResource("14_g6gyw")
+metadata/_custom_type_script = "uid://cf251xbsa753y"
 
 [node name="Nighttime" type="AudioStreamPlayer" parent="." unique_id=521353391]
 stream = ExtResource("15_7jp70")
