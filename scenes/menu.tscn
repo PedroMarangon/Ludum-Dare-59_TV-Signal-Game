@@ -85,7 +85,7 @@ shader_parameter/cloud_power = 1.0
 shader_parameter/multiply_cloud = true
 shader_parameter/clouds_noise = SubResource("NoiseTexture2D_trtic")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7jp70"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mxgkd"]
 resource_local_to_scene = true
 shader = ExtResource("3_i42df")
 shader_parameter/background_color = Color(0, 0, 0, 1)
@@ -179,7 +179,7 @@ modulate = Color(0.18269998, 0.87, 0.4232551, 1)
 visible = false
 
 [node name="Progress" parent="Scenario/Houses/House/UI/NinePatchRect" parent_id_path=PackedInt32Array(1085918880, 761430639) index="0" unique_id=1756235201]
-material = SubResource("ShaderMaterial_7jp70")
+material = SubResource("ShaderMaterial_mxgkd")
 
 [node name="Grass" type="Node2D" parent="Scenario" unique_id=1336957973]
 script = SubResource("GDScript_kvpfn")

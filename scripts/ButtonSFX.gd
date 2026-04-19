@@ -1,7 +1,7 @@
 class_name ButtonSFX extends Node
 
 
-@export var button_click: AudioStreamOggVorbis = preload("uid://b82gqvsgo5ltu")
+@export var button_click: AudioStream = preload("uid://b82gqvsgo5ltu")
 var player :AudioStreamPlayer
 
 func _ready() -> void:

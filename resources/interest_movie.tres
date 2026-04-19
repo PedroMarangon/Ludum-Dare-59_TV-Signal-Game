@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="Interest" format=3 uid="uid://mnny2q74ljs5"]
 
+[ext_resource type="AudioStream" uid="uid://77onb8sf1e4c" path="res://assets/sfx/channel_movies.ogg" id="1_32guv"]
 [ext_resource type="Script" uid="uid://dhg1muh52x5l0" path="res://scripts/interest.gd" id="1_kj5f7"]
 [ext_resource type="Texture2D" uid="uid://djuy5yvbwang1" path="res://assets/sprites/icons.png" id="1_suspm"]
 
@@ -10,4 +11,5 @@ region = Rect2(256, 256, 256, 256)
 [resource]
 script = ExtResource("1_kj5f7")
 icon = SubResource("AtlasTexture_suspm")
+audio_channel = ExtResource("1_32guv")
 metadata/_custom_type_script = "uid://dhg1muh52x5l0"
