@@ -516,6 +516,7 @@ position = Vector2(0, 72)
 
 [node name="TV_Antenna" parent="Antenna" unique_id=1073357383 node_paths=PackedStringArray("house") instance=ExtResource("1_yqjtg")]
 position = Vector2(-351.99997, 103.99999)
+scale = Vector2(0.18505642, 0.2)
 acceptable_interests = Array[ExtResource("3_feb5d")]([ExtResource("6_0tnpc"), ExtResource("3_lbhrr"), ExtResource("7_vtaks")])
 house = NodePath("../../Scenario/Houses/House")
 
@@ -532,15 +533,15 @@ house = NodePath("../../Scenario/Houses/House3")
 [node name="Channels" type="Node2D" parent="." unique_id=2082271592]
 
 [node name="InterestChannel" parent="Channels" unique_id=19260816 instance=ExtResource("3_lnu2h")]
-position = Vector2(-300, -104)
+position = Vector2(-309, -102.00001)
 interest = ExtResource("3_lbhrr")
 
 [node name="InterestChannel2" parent="Channels" unique_id=2080618144 instance=ExtResource("3_lnu2h")]
-position = Vector2(311, -94.00001)
+position = Vector2(319, -97.00001)
 interest = ExtResource("4_u5sy4")
 
 [node name="InterestChannel3" parent="Channels" unique_id=1435998991 instance=ExtResource("3_lnu2h")]
-position = Vector2(169, -191)
+position = Vector2(181, -192)
 interest = ExtResource("5_gee14")
 
 [node name="InterestChannel4" parent="Channels" unique_id=1328126157 instance=ExtResource("3_lnu2h")]
@@ -548,5 +549,5 @@ position = Vector2(-9, -236.00002)
 interest = ExtResource("6_0tnpc")
 
 [node name="InterestChannel5" parent="Channels" unique_id=72220851 instance=ExtResource("3_lnu2h")]
-position = Vector2(-180, -193.00002)
+position = Vector2(-195, -191.00002)
 interest = ExtResource("7_vtaks")

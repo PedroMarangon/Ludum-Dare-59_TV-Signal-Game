@@ -7,6 +7,7 @@ signal stopped_holding
 @export var speed :float = 50.0
 @export var acceptable_interests :Array[Interest]
 @export var current_interest :Interest
+@export var interest_time_range :Vector2 = Vector2(5, 10)
 
 @export_group("Signal Colors")
 @export var no_signal_color :Color = Color.WHITE
@@ -24,6 +25,8 @@ signal stopped_holding
 
 var is_holding:bool = false
 var signal_channels :Array[InterestChannel] =[]
+var time_passed :float = 0.0
+var needed_time :float = 0.0
 
 func _ready() -> void:
 	set_color(null, false)
@@ -39,6 +42,7 @@ func _input(event: InputEvent) -> void:
 
 func _process(delta: float) -> void:
 	update_rotation(delta)
+	update_interest_progress(delta)
 
 
 
@@ -50,20 +54,41 @@ func update_rotation(delta:float) -> void:
 	head.rotation_degrees = move_toward(head.rotation_degrees, target_rotation, delta * speed)
 
 
+func update_interest_progress(delta:float) -> void:
+	if not has_correct_signal():
+		time_passed = max(time_passed - delta, 0)
+		house.update_progress(time_passed / needed_time)
+		return
+	time_passed = min(time_passed + delta, needed_time)
+	house.update_progress(time_passed / needed_time)
+	
+	if time_passed >= needed_time:
+		select_random_interest()
+
 func select_random_interest() -> void:
 	current_interest = acceptable_interests.pick_random()
+	needed_time = randf_range(interest_time_range.x, interest_time_range.y)
+	time_passed = 0.0
+	signal_channels.clear()
+	set_color(null, false)
 	house.switch_content(current_interest)
 
 
 func set_color(interest_channel:InterestChannel, is_entering:bool) -> void:
-	if not is_entering and signal_channels.is_empty():
-		tv_signal_sprite.modulate = no_signal_color
+	if not is_entering:
+		if signal_channels.is_empty():
+			tv_signal_sprite.modulate = no_signal_color
+			return
 		return
 	
 	if interest_channel == null:
 		return
 	
-	tv_signal_sprite.modulate = correct_signal_color if interest_channel.interest == current_interest else wrong_signal_color
+	if interest_channel.interest == current_interest:
+		tv_signal_sprite.modulate = correct_signal_color if interest_channel.interest == current_interest else wrong_signal_color
+		return
+	
+	tv_signal_sprite.modulate = wrong_signal_color
 
 func set_alpha(is_selected:bool) -> void:
 	var color :Color = Color(Color.WHITE, selected_alpha if is_selected else non_selected_alpha)
@@ -99,3 +124,9 @@ func _on_tv_signal_area_exited(area: Area2D) -> void:
 		signal_channels.erase(area as InterestChannel)
 		set_color(area as InterestChannel, false)
 #endregion
+
+
+func has_correct_signal() -> bool:
+	if signal_channels.size() != 1:
+		return false
+	return signal_channels[0].interest == current_interest
