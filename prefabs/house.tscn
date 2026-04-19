@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://tqvckvutc3s7"]
 
-[ext_resource type="Texture2D" uid="uid://cgn8646i41vre" path="res://assets/house.png" id="1_25t6t"]
 [ext_resource type="Script" uid="uid://covx8d63hxbjn" path="res://scripts/house.gd" id="1_o8sle"]
-[ext_resource type="Texture2D" uid="uid://djuy5yvbwang1" path="res://assets/icons.png" id="3_upbwm"]
+[ext_resource type="Texture2D" uid="uid://cgn8646i41vre" path="res://assets/sprites/house.png" id="2_44rip"]
+[ext_resource type="Texture2D" uid="uid://djuy5yvbwang1" path="res://assets/sprites/icons.png" id="3_44rip"]
 [ext_resource type="Shader" uid="uid://dk5om520tyua7" path="res://shaders/circle_progress_bar.gdshader" id="4_44rip"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hvfu8"]
@@ -14,10 +14,6 @@ shader_parameter/fill = 0.93999997898912
 shader_parameter/width = 0.1499999966472
 shader_parameter/size = 0.46999998949456
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_44rip"]
-atlas = ExtResource("3_upbwm")
-region = Rect2(512, 0, 256, 256)
-
 [node name="House" type="Node2D" unique_id=1085918880]
 script = ExtResource("1_o8sle")
 colors = Array[Color]([Color(1, 1, 1, 1), Color(0.87, 0.36540002, 0.36540002, 1), Color(0.22399999, 0.7, 0.2795334, 1), Color(0.49679998, 0.8635734, 0.92, 1), Color(0.87, 0.68817, 0.29579997, 1), Color(0.94298315, 0.6430187, 0.42626217, 1), Color(0.11436529, 0.5325902, 0.8918933, 1), Color(0.9288484, 0.687854, 0.82112277, 1), Color(0.62152386, 0.62152386, 0.6215238, 1), Color(0.9625718, 0.529497, 0.31080335, 1)])
@@ -28,21 +24,21 @@ modulate = Color(0.3723, 0.41360998, 0.51, 1)
 [node name="Walls" type="Sprite2D" parent="Sprites" unique_id=51530623]
 unique_name_in_owner = true
 position = Vector2(0, -768)
-texture = ExtResource("1_25t6t")
+texture = ExtResource("2_44rip")
 hframes = 2
 vframes = 2
 frame = 2
 
 [node name="Details" type="Sprite2D" parent="Sprites" unique_id=1699545253]
 position = Vector2(0, -768)
-texture = ExtResource("1_25t6t")
+texture = ExtResource("2_44rip")
 hframes = 2
 vframes = 2
 frame = 1
 
 [node name="Roof" type="Sprite2D" parent="Sprites" unique_id=1971170891]
 position = Vector2(0, -768)
-texture = ExtResource("1_25t6t")
+texture = ExtResource("2_44rip")
 hframes = 2
 vframes = 2
 
@@ -68,7 +64,7 @@ offset_right = 406.0
 offset_bottom = -361.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_upbwm")
+texture = ExtResource("3_44rip")
 region_rect = Rect2(512, 256, 256, 256)
 patch_margin_left = 100
 patch_margin_top = 100
@@ -97,7 +93,6 @@ offset_right = 317.0
 offset_bottom = 317.0
 scale = Vector2(0.7, 0.7)
 pivot_offset_ratio = Vector2(0.5, 0.5)
-texture = SubResource("AtlasTexture_44rip")
 
 [node name="Polygon2D" type="Polygon2D" parent="UI/NinePatchRect" unique_id=1670639518]
 position = Vector2(-165, 1006)

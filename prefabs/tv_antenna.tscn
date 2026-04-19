@@ -9,7 +9,7 @@
 [ext_resource type="Resource" uid="uid://beveyt2dp5b3y" path="res://resources/interest_drama.tres" id="5_xb6rf"]
 [ext_resource type="Resource" uid="uid://mnny2q74ljs5" path="res://resources/interest_movie.tres" id="6_s03wv"]
 [ext_resource type="Resource" uid="uid://bdi2y86je80oh" path="res://resources/interest_sports.tres" id="7_tx3su"]
-[ext_resource type="Texture2D" uid="uid://djuy5yvbwang1" path="res://assets/icons.png" id="8_gefff"]
+[ext_resource type="Texture2D" uid="uid://djuy5yvbwang1" path="res://assets/sprites/icons.png" id="8_gefff"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_aq5bu"]
 shader = ExtResource("3_ewu38")

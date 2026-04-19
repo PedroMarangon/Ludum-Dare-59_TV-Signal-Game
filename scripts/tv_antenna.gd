@@ -19,7 +19,6 @@ signal stopped_holding
 @export_group("Connections")
 @export var house :House
 
-@onready var sprite_2d: Sprite2D = %Sprite2D
 @onready var tv_signal_sprite: Sprite2D = %TV_SpriteShader
 @onready var head: Marker2D = %Head
 

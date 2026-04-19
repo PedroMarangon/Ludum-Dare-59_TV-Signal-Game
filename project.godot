@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Broadcast Alignment"
+config/version="1.0.0"
 run/main_scene="uid://bb6lddk7ogrii"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="uid://n886cdhmdufr"
