@@ -1,17 +1,19 @@
-[gd_scene format=3 uid="uid://blb8kba4uy581"]
+[gd_scene format=3 uid="uid://bb6lddk7ogrii"]
 
-[ext_resource type="Shader" uid="uid://dw32vddpa3wni" path="res://shaders/bg_stars.gdshader" id="1_vtaks"]
-[ext_resource type="PackedScene" uid="uid://dj7hrroalnam7" path="res://prefabs/tv_antenna.tscn" id="1_yqjtg"]
-[ext_resource type="Script" uid="uid://dhg1muh52x5l0" path="res://scripts/interest.gd" id="3_feb5d"]
-[ext_resource type="Texture2D" uid="uid://djuy5yvbwang1" path="res://assets/icons.png" id="3_kvpfn"]
-[ext_resource type="Resource" uid="uid://mnny2q74ljs5" path="res://resources/interest_movie.tres" id="3_lbhrr"]
-[ext_resource type="PackedScene" uid="uid://wo721h5vxll1" path="res://prefabs/interest.tscn" id="3_lnu2h"]
-[ext_resource type="Resource" uid="uid://c6bpd28kldre7" path="res://resources/interest_cooking.tres" id="4_u5sy4"]
-[ext_resource type="Resource" uid="uid://bdi2y86je80oh" path="res://resources/interest_sports.tres" id="5_gee14"]
-[ext_resource type="Resource" uid="uid://cuunrvnmb6oym" path="res://resources/interest_cartoon.tres" id="6_0tnpc"]
-[ext_resource type="Resource" uid="uid://beveyt2dp5b3y" path="res://resources/interest_drama.tres" id="7_vtaks"]
-[ext_resource type="PackedScene" uid="uid://tqvckvutc3s7" path="res://prefabs/house.tscn" id="9_0tnpc"]
-[ext_resource type="AudioStream" uid="uid://b54pdodvuy534" path="res://assets/nighttime.ogg" id="12_dinhu"]
+[ext_resource type="Shader" uid="uid://dw32vddpa3wni" path="res://shaders/bg_stars.gdshader" id="1_mj5lg"]
+[ext_resource type="PackedScene" uid="uid://tqvckvutc3s7" path="res://prefabs/house.tscn" id="2_ufwb2"]
+[ext_resource type="Texture2D" uid="uid://djuy5yvbwang1" path="res://assets/icons.png" id="3_6cdou"]
+[ext_resource type="Shader" uid="uid://dk5om520tyua7" path="res://shaders/circle_progress_bar.gdshader" id="3_i42df"]
+[ext_resource type="PackedScene" uid="uid://dj7hrroalnam7" path="res://prefabs/tv_antenna.tscn" id="4_i42df"]
+[ext_resource type="Script" uid="uid://dhg1muh52x5l0" path="res://scripts/interest.gd" id="5_7jp70"]
+[ext_resource type="Resource" uid="uid://cuunrvnmb6oym" path="res://resources/interest_cartoon.tres" id="6_mxgkd"]
+[ext_resource type="Resource" uid="uid://mnny2q74ljs5" path="res://resources/interest_movie.tres" id="7_g6gyw"]
+[ext_resource type="Resource" uid="uid://beveyt2dp5b3y" path="res://resources/interest_drama.tres" id="8_3dmrc"]
+[ext_resource type="Script" uid="uid://ghbst2j2hg3" path="res://scripts/main_menu.gd" id="9_ufwb2"]
+[ext_resource type="FontFile" uid="uid://u3vgbfjbf73w" path="res://assets/SUSE-Black.ttf" id="10_mj5lg"]
+[ext_resource type="Texture2D" uid="uid://ceecp4u6v3yug" path="res://assets/logo.png" id="11_6cdou"]
+[ext_resource type="PackedScene" uid="uid://blb8kba4uy581" path="res://scenes/game.tscn" id="11_i42df"]
+[ext_resource type="AudioStream" uid="uid://b54pdodvuy534" path="res://assets/nighttime.ogg" id="11_mj5lg"]
 
 [sub_resource type="Gradient" id="Gradient_vtaks"]
 offsets = PackedFloat32Array(0.672043, 0.79569894)
@@ -46,7 +48,7 @@ normalize = false
 seamless_blend_skirt = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kvpfn"]
-shader = ExtResource("1_vtaks")
+shader = ExtResource("1_mj5lg")
 shader_parameter/star_noise = SubResource("NoiseTexture2D_kvuet")
 shader_parameter/speed = 1.0
 shader_parameter/cloud_power = 0.05
@@ -74,12 +76,21 @@ noise = SubResource("FastNoiseLite_ca42v")
 color_ramp = SubResource("Gradient_ir15t")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ssvqc"]
-shader = ExtResource("1_vtaks")
+shader = ExtResource("1_mj5lg")
 shader_parameter/star_noise = SubResource("NoiseTexture2D_rysoc")
 shader_parameter/speed = 0.0
 shader_parameter/cloud_power = 1.0
 shader_parameter/multiply_cloud = true
 shader_parameter/clouds_noise = SubResource("NoiseTexture2D_trtic")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7jp70"]
+resource_local_to_scene = true
+shader = ExtResource("3_i42df")
+shader_parameter/background_color = Color(0, 0, 0, 1)
+shader_parameter/foreground_color = Color(0.18647999, 0.74, 0.088800006, 1)
+shader_parameter/fill = 0.93999997898912
+shader_parameter/width = 0.1499999966472
+shader_parameter/size = 0.46999998949456
 
 [sub_resource type="GDScript" id="GDScript_kvpfn"]
 resource_name = "grass_randomizer"
@@ -100,7 +111,11 @@ func _ready() -> void:
 		grass.flip_h = randf() > 0.5
 "
 
-[node name="Node2D" type="Node2D" unique_id=867534550]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_70i5f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mj5lg"]
+
+[node name="MainMenu" type="Node2D" unique_id=867534550]
 
 [node name="Scenario" type="Node2D" parent="." unique_id=981728001]
 
@@ -139,23 +154,23 @@ metadata/_edit_lock_ = true
 [node name="Houses" type="Node2D" parent="Scenario" unique_id=1248918203]
 metadata/_edit_lock_ = true
 
-[node name="House" parent="Scenario/Houses" unique_id=1085918880 instance=ExtResource("9_0tnpc")]
+[node name="House" parent="Scenario/Houses" unique_id=1085918880 instance=ExtResource("2_ufwb2")]
+physics_interpolation_mode = 2
 position = Vector2(-376, 368)
 scale = Vector2(0.25, 0.25)
-enabled = null
+enabled = false
+random_color = false
+single_color = Color(0.18269998, 0.87, 0.4232551, 1)
 metadata/_edit_lock_ = true
 
-[node name="House2" parent="Scenario/Houses" unique_id=2041218654 instance=ExtResource("9_0tnpc")]
-position = Vector2(-8, 368)
-scale = Vector2(0.25, 0.25)
-enabled = null
-metadata/_edit_lock_ = true
+[node name="Walls" parent="Scenario/Houses/House/Sprites" parent_id_path=PackedInt32Array(1085918880, 829777077) index="0" unique_id=51530623]
+modulate = Color(0.18269998, 0.87, 0.4232551, 1)
 
-[node name="House3" parent="Scenario/Houses" unique_id=1526619360 instance=ExtResource("9_0tnpc")]
-position = Vector2(368, 368)
-scale = Vector2(0.25, 0.25)
-enabled = null
-metadata/_edit_lock_ = true
+[node name="UI" parent="Scenario/Houses/House" index="1" unique_id=1010802205]
+visible = false
+
+[node name="Progress" parent="Scenario/Houses/House/UI/NinePatchRect" parent_id_path=PackedInt32Array(1085918880, 761430639) index="0" unique_id=1756235201]
+material = SubResource("ShaderMaterial_7jp70")
 
 [node name="Grass" type="Node2D" parent="Scenario" unique_id=1336957973]
 script = SubResource("GDScript_kvpfn")
@@ -167,7 +182,7 @@ metadata/_edit_lock_ = true
 modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
 position = Vector2(-624, 358)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_kvpfn")
+texture = ExtResource("3_6cdou")
 hframes = 4
 vframes = 4
 frame = 3
@@ -177,7 +192,7 @@ metadata/_edit_lock_ = true
 modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
 position = Vector2(-590, 354)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_kvpfn")
+texture = ExtResource("3_6cdou")
 hframes = 4
 vframes = 4
 frame = 3
@@ -187,7 +202,7 @@ metadata/_edit_lock_ = true
 modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
 position = Vector2(-394, 364)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_kvpfn")
+texture = ExtResource("3_6cdou")
 hframes = 4
 vframes = 4
 frame = 3
@@ -197,7 +212,7 @@ metadata/_edit_lock_ = true
 modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
 position = Vector2(-242.00002, 359)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_kvpfn")
+texture = ExtResource("3_6cdou")
 hframes = 4
 vframes = 4
 frame = 3
@@ -207,7 +222,7 @@ metadata/_edit_lock_ = true
 modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
 position = Vector2(-263, 365)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_kvpfn")
+texture = ExtResource("3_6cdou")
 hframes = 4
 vframes = 4
 frame = 3
@@ -217,7 +232,7 @@ metadata/_edit_lock_ = true
 modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
 position = Vector2(-185, 369)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_kvpfn")
+texture = ExtResource("3_6cdou")
 hframes = 4
 vframes = 4
 frame = 3
@@ -227,7 +242,7 @@ metadata/_edit_lock_ = true
 modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
 position = Vector2(-213, 357)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_kvpfn")
+texture = ExtResource("3_6cdou")
 hframes = 4
 vframes = 4
 frame = 3
@@ -237,7 +252,7 @@ metadata/_edit_lock_ = true
 modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
 position = Vector2(-88.00001, 368)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_kvpfn")
+texture = ExtResource("3_6cdou")
 hframes = 4
 vframes = 4
 frame = 3
@@ -247,7 +262,7 @@ metadata/_edit_lock_ = true
 modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
 position = Vector2(-37.000004, 363)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_kvpfn")
+texture = ExtResource("3_6cdou")
 hframes = 4
 vframes = 4
 frame = 3
@@ -257,7 +272,7 @@ metadata/_edit_lock_ = true
 modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
 position = Vector2(24.999996, 364)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_kvpfn")
+texture = ExtResource("3_6cdou")
 hframes = 4
 vframes = 4
 frame = 3
@@ -267,7 +282,7 @@ metadata/_edit_lock_ = true
 modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
 position = Vector2(235, 402)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_kvpfn")
+texture = ExtResource("3_6cdou")
 hframes = 4
 vframes = 4
 frame = 3
@@ -277,7 +292,7 @@ metadata/_edit_lock_ = true
 modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
 position = Vector2(181.99998, 395.8)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_kvpfn")
+texture = ExtResource("3_6cdou")
 hframes = 4
 vframes = 4
 frame = 3
@@ -287,7 +302,7 @@ metadata/_edit_lock_ = true
 modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
 position = Vector2(200, 362)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_kvpfn")
+texture = ExtResource("3_6cdou")
 hframes = 4
 vframes = 4
 frame = 3
@@ -297,7 +312,7 @@ metadata/_edit_lock_ = true
 modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
 position = Vector2(-157.19998, 395.8)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_kvpfn")
+texture = ExtResource("3_6cdou")
 hframes = 4
 vframes = 4
 frame = 3
@@ -307,7 +322,7 @@ metadata/_edit_lock_ = true
 modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
 position = Vector2(-106.19998, 390.8)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_kvpfn")
+texture = ExtResource("3_6cdou")
 hframes = 4
 vframes = 4
 frame = 3
@@ -317,7 +332,7 @@ metadata/_edit_lock_ = true
 modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
 position = Vector2(-44.199986, 391.8)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_kvpfn")
+texture = ExtResource("3_6cdou")
 hframes = 4
 vframes = 4
 frame = 3
@@ -327,7 +342,7 @@ metadata/_edit_lock_ = true
 modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
 position = Vector2(46.800003, 388.8)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_kvpfn")
+texture = ExtResource("3_6cdou")
 hframes = 4
 vframes = 4
 frame = 3
@@ -337,7 +352,7 @@ metadata/_edit_lock_ = true
 modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
 position = Vector2(98.80002, 407.8)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_kvpfn")
+texture = ExtResource("3_6cdou")
 hframes = 4
 vframes = 4
 frame = 3
@@ -347,7 +362,7 @@ metadata/_edit_lock_ = true
 modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
 position = Vector2(144.8, 405.59998)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_kvpfn")
+texture = ExtResource("3_6cdou")
 hframes = 4
 vframes = 4
 frame = 3
@@ -357,7 +372,7 @@ metadata/_edit_lock_ = true
 modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
 position = Vector2(-571.2, 403.8)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_kvpfn")
+texture = ExtResource("3_6cdou")
 hframes = 4
 vframes = 4
 frame = 3
@@ -367,7 +382,7 @@ metadata/_edit_lock_ = true
 modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
 position = Vector2(-520.2, 398.8)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_kvpfn")
+texture = ExtResource("3_6cdou")
 hframes = 4
 vframes = 4
 frame = 3
@@ -377,7 +392,7 @@ metadata/_edit_lock_ = true
 modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
 position = Vector2(-458.2, 399.8)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_kvpfn")
+texture = ExtResource("3_6cdou")
 hframes = 4
 vframes = 4
 frame = 3
@@ -387,7 +402,7 @@ metadata/_edit_lock_ = true
 modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
 position = Vector2(-367.2, 396.8)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_kvpfn")
+texture = ExtResource("3_6cdou")
 hframes = 4
 vframes = 4
 frame = 3
@@ -397,7 +412,7 @@ metadata/_edit_lock_ = true
 modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
 position = Vector2(-315.2, 415.8)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_kvpfn")
+texture = ExtResource("3_6cdou")
 hframes = 4
 vframes = 4
 frame = 3
@@ -407,7 +422,7 @@ metadata/_edit_lock_ = true
 modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
 position = Vector2(-283.2, 397.8)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_kvpfn")
+texture = ExtResource("3_6cdou")
 hframes = 4
 vframes = 4
 frame = 3
@@ -417,7 +432,7 @@ metadata/_edit_lock_ = true
 modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
 position = Vector2(313, 377)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_kvpfn")
+texture = ExtResource("3_6cdou")
 hframes = 4
 vframes = 4
 frame = 3
@@ -427,7 +442,7 @@ metadata/_edit_lock_ = true
 modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
 position = Vector2(348, 407)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_kvpfn")
+texture = ExtResource("3_6cdou")
 hframes = 4
 vframes = 4
 frame = 3
@@ -437,7 +452,7 @@ metadata/_edit_lock_ = true
 modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
 position = Vector2(347, 365)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_kvpfn")
+texture = ExtResource("3_6cdou")
 hframes = 4
 vframes = 4
 frame = 3
@@ -447,7 +462,7 @@ metadata/_edit_lock_ = true
 modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
 position = Vector2(425, 363)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_kvpfn")
+texture = ExtResource("3_6cdou")
 hframes = 4
 vframes = 4
 frame = 3
@@ -457,7 +472,7 @@ metadata/_edit_lock_ = true
 modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
 position = Vector2(471, 377)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_kvpfn")
+texture = ExtResource("3_6cdou")
 hframes = 4
 vframes = 4
 frame = 3
@@ -467,7 +482,7 @@ metadata/_edit_lock_ = true
 modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
 position = Vector2(502, 360)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_kvpfn")
+texture = ExtResource("3_6cdou")
 hframes = 4
 vframes = 4
 frame = 3
@@ -477,7 +492,7 @@ metadata/_edit_lock_ = true
 modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
 position = Vector2(543, 360)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_kvpfn")
+texture = ExtResource("3_6cdou")
 hframes = 4
 vframes = 4
 frame = 3
@@ -487,7 +502,7 @@ metadata/_edit_lock_ = true
 modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
 position = Vector2(588, 383)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_kvpfn")
+texture = ExtResource("3_6cdou")
 hframes = 4
 vframes = 4
 frame = 3
@@ -497,7 +512,7 @@ metadata/_edit_lock_ = true
 modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
 position = Vector2(525, 414)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_kvpfn")
+texture = ExtResource("3_6cdou")
 hframes = 4
 vframes = 4
 frame = 3
@@ -507,56 +522,113 @@ metadata/_edit_lock_ = true
 modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
 position = Vector2(631, 360)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_kvpfn")
+texture = ExtResource("3_6cdou")
 hframes = 4
 vframes = 4
 frame = 3
 metadata/_edit_lock_ = true
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1101897568]
-position = Vector2(0, 72)
+[node name="Antenna" type="Node2D" parent="Scenario" unique_id=1302027677]
 
-[node name="Antenna" type="Node2D" parent="." unique_id=1302027677]
-
-[node name="TV_Antenna" parent="Antenna" unique_id=1073357383 node_paths=PackedStringArray("house") instance=ExtResource("1_yqjtg")]
+[node name="TV_Antenna" parent="Scenario/Antenna" unique_id=1073357383 node_paths=PackedStringArray("house") instance=ExtResource("4_i42df")]
+process_mode = 4
+physics_interpolation_mode = 2
 position = Vector2(-351.99997, 103.99999)
 scale = Vector2(0.18505642, 0.2)
-acceptable_interests = Array[ExtResource("3_feb5d")]([ExtResource("6_0tnpc"), ExtResource("3_lbhrr"), ExtResource("7_vtaks")])
-house = NodePath("../../Scenario/Houses/House")
+acceptable_interests = Array[ExtResource("5_7jp70")]([ExtResource("6_mxgkd"), ExtResource("7_g6gyw"), ExtResource("8_3dmrc")])
+house = NodePath("../../Houses/House")
 
-[node name="TV_Antenna2" parent="Antenna" unique_id=2053965206 node_paths=PackedStringArray("house") instance=ExtResource("1_yqjtg")]
-position = Vector2(15.999999, 103.99999)
-acceptable_interests = Array[ExtResource("3_feb5d")]([ExtResource("4_u5sy4"), ExtResource("7_vtaks"), ExtResource("5_gee14")])
-house = NodePath("../../Scenario/Houses/House2")
+[node name="Head" parent="Scenario/Antenna/TV_Antenna" index="1" unique_id=1676430055]
+rotation = 1.0471976
 
-[node name="TV_Antenna3" parent="Antenna" unique_id=1246153024 node_paths=PackedStringArray("house") instance=ExtResource("1_yqjtg")]
-position = Vector2(391.99997, 103.99999)
-acceptable_interests = Array[ExtResource("3_feb5d")]([ExtResource("6_0tnpc"), ExtResource("7_vtaks"), ExtResource("5_gee14")])
-house = NodePath("../../Scenario/Houses/House3")
+[node name="CollisionPolygon2D" parent="Scenario/Antenna/TV_Antenna/Head/TV_SpriteShader/TV_Area2D" parent_id_path=PackedInt32Array(1073357383, 98487875) index="0" unique_id=444996445]
+visible = false
 
-[node name="Channels" type="Node2D" parent="." unique_id=2082271592]
+[node name="MouseDetection" parent="Scenario/Antenna/TV_Antenna/Head/HeadSprite" parent_id_path=PackedInt32Array(1073357383, 1846191870) index="0" unique_id=512800526]
+visible = false
 
-[node name="InterestChannel" parent="Channels" unique_id=19260816 instance=ExtResource("3_lnu2h")]
-position = Vector2(-309, -102.00001)
-interest = ExtResource("3_lbhrr")
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1101897568]
+position = Vector2(-234.00002, 189)
+rotation = 2.915643
+zoom = Vector2(1.625, 1.625)
 
-[node name="InterestChannel2" parent="Channels" unique_id=2080618144 instance=ExtResource("3_lnu2h")]
-position = Vector2(319, -97.00001)
-interest = ExtResource("4_u5sy4")
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1847657290]
+script = ExtResource("9_ufwb2")
+scene_to_load = ExtResource("11_i42df")
+logo_rotation = Vector2(0.2, 0.7)
+logo_scale = Vector2(0.03, 0.1)
 
-[node name="InterestChannel3" parent="Channels" unique_id=1435998991 instance=ExtResource("3_lnu2h")]
-position = Vector2(181, -192)
-interest = ExtResource("5_gee14")
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer" unique_id=481612825]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -489.0
+offset_top = -310.0
+offset_right = -46.0
+offset_bottom = 310.0
+grow_horizontal = 0
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_styles/panel = SubResource("StyleBoxEmpty_70i5f")
 
-[node name="InterestChannel4" parent="Channels" unique_id=1328126157 instance=ExtResource("3_lnu2h")]
-position = Vector2(-9, -236.00002)
-interest = ExtResource("6_0tnpc")
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanelContainer" unique_id=367839755]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 
-[node name="InterestChannel5" parent="Channels" unique_id=72220851 instance=ExtResource("3_lnu2h")]
-position = Vector2(-195, -191.00002)
-interest = ExtResource("7_vtaks")
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer/MarginContainer" unique_id=1938887843]
+layout_mode = 2
+alignment = 1
 
-[node name="Nighttime" type="AudioStreamPlayer" parent="." unique_id=1019627821]
-stream = ExtResource("12_dinhu")
-volume_db = -9.82
+[node name="Control" type="Control" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1740856909]
+custom_minimum_size = Vector2(403, 201.5)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/Control" unique_id=1602010202]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 403.0
+offset_bottom = 201.5
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("11_6cdou")
+expand_mode = 5
+stretch_mode = 4
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer" unique_id=358559422]
+layout_mode = 2
+theme_override_constants/separation = 128
+theme_override_styles/separator = SubResource("StyleBoxEmpty_mj5lg")
+
+[node name="PlayBtn" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer" unique_id=32988821]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_mj5lg")
+theme_override_font_sizes/font_size = 48
+text = "Play"
+
+[node name="CreditsBtn" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1161931946]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_mj5lg")
+theme_override_font_sizes/font_size = 48
+text = "Credits"
+
+[node name="QuitBtn" type="Button" parent="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer" unique_id=379176489]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_mj5lg")
+theme_override_font_sizes/font_size = 48
+text = "Quit"
+
+[node name="Nighttime" type="AudioStreamPlayer" parent="." unique_id=521353391]
+stream = ExtResource("11_mj5lg")
+volume_db = -13.837
 autoplay = true
+
+[connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/PlayBtn" to="CanvasLayer" method="_on_play_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/CreditsBtn" to="CanvasLayer" method="_on_credits_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/PanelContainer/MarginContainer/VBoxContainer/QuitBtn" to="CanvasLayer" method="_on_quit_btn_pressed"]
+
+[editable path="Scenario/Houses/House"]
+[editable path="Scenario/Antenna/TV_Antenna"]

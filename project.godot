@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="Ludum Dare 59"
-run/main_scene="uid://blb8kba4uy581"
+config/name="Broadcast Alignment"
+run/main_scene="uid://bb6lddk7ogrii"
 config/features=PackedStringArray("4.6", "Mobile")
-config/icon="res://icon.svg"
+config/icon="uid://n886cdhmdufr"
 
 [display]
 
