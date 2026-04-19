@@ -9,7 +9,6 @@
 [ext_resource type="Resource" uid="uid://c6bpd28kldre7" path="res://resources/interest_cooking.tres" id="4_u5sy4"]
 [ext_resource type="Resource" uid="uid://bdi2y86je80oh" path="res://resources/interest_sports.tres" id="5_gee14"]
 [ext_resource type="Resource" uid="uid://cuunrvnmb6oym" path="res://resources/interest_cartoon.tres" id="6_0tnpc"]
-[ext_resource type="Resource" uid="uid://beveyt2dp5b3y" path="res://resources/interest_drama.tres" id="7_vtaks"]
 [ext_resource type="PackedScene" uid="uid://tqvckvutc3s7" path="res://prefabs/house.tscn" id="9_0tnpc"]
 [ext_resource type="AudioStream" uid="uid://b54pdodvuy534" path="res://assets/sfx/nighttime.ogg" id="12_dinhu"]
 
@@ -518,40 +517,36 @@ position = Vector2(0, 72)
 [node name="TV_Antenna" parent="Antenna" unique_id=1073357383 node_paths=PackedStringArray("house") instance=ExtResource("1_yqjtg")]
 position = Vector2(-351.99997, 103.99999)
 scale = Vector2(0.18505642, 0.2)
-acceptable_interests = Array[ExtResource("3_feb5d")]([ExtResource("6_0tnpc"), ExtResource("3_lbhrr"), ExtResource("7_vtaks")])
+acceptable_interests = Array[ExtResource("3_feb5d")]([ExtResource("6_0tnpc"), ExtResource("3_lbhrr")])
 house = NodePath("../../Scenario/Houses/House")
 
 [node name="TV_Antenna2" parent="Antenna" unique_id=2053965206 node_paths=PackedStringArray("house") instance=ExtResource("1_yqjtg")]
 position = Vector2(15.999999, 103.99999)
-acceptable_interests = Array[ExtResource("3_feb5d")]([ExtResource("4_u5sy4"), ExtResource("7_vtaks"), ExtResource("5_gee14")])
+acceptable_interests = Array[ExtResource("3_feb5d")]([ExtResource("4_u5sy4"), ExtResource("5_gee14")])
 house = NodePath("../../Scenario/Houses/House2")
 
 [node name="TV_Antenna3" parent="Antenna" unique_id=1246153024 node_paths=PackedStringArray("house") instance=ExtResource("1_yqjtg")]
 position = Vector2(391.99997, 103.99999)
-acceptable_interests = Array[ExtResource("3_feb5d")]([ExtResource("6_0tnpc"), ExtResource("7_vtaks"), ExtResource("5_gee14")])
+acceptable_interests = Array[ExtResource("3_feb5d")]([ExtResource("6_0tnpc"), ExtResource("5_gee14")])
 house = NodePath("../../Scenario/Houses/House3")
 
 [node name="Channels" type="Node2D" parent="." unique_id=2082271592]
 
 [node name="InterestChannel" parent="Channels" unique_id=19260816 instance=ExtResource("3_lnu2h")]
-position = Vector2(-309, -102.00001)
+position = Vector2(-284, -114.00001)
 interest = ExtResource("3_lbhrr")
 
 [node name="InterestChannel2" parent="Channels" unique_id=2080618144 instance=ExtResource("3_lnu2h")]
-position = Vector2(319, -97.00001)
+position = Vector2(282, -152)
 interest = ExtResource("4_u5sy4")
 
 [node name="InterestChannel3" parent="Channels" unique_id=1435998991 instance=ExtResource("3_lnu2h")]
-position = Vector2(181, -192)
+position = Vector2(172, -223.00002)
 interest = ExtResource("5_gee14")
 
 [node name="InterestChannel4" parent="Channels" unique_id=1328126157 instance=ExtResource("3_lnu2h")]
-position = Vector2(-9, -236.00002)
+position = Vector2(-155, -208.00002)
 interest = ExtResource("6_0tnpc")
-
-[node name="InterestChannel5" parent="Channels" unique_id=72220851 instance=ExtResource("3_lnu2h")]
-position = Vector2(-195, -191.00002)
-interest = ExtResource("7_vtaks")
 
 [node name="Nighttime" type="AudioStreamPlayer" parent="." unique_id=1019627821]
 stream = ExtResource("12_dinhu")

@@ -65,7 +65,12 @@ func update_interest_progress(delta:float) -> void:
 		select_random_interest()
 
 func select_random_interest() -> void:
-	current_interest = acceptable_interests.pick_random()
+	if acceptable_interests.is_empty():
+		return
+	
+	var old :Interest = current_interest
+	while old == current_interest:
+		current_interest = acceptable_interests.pick_random()
 	needed_time = randf_range(interest_time_range.x, interest_time_range.y)
 	time_passed = 0.0
 	signal_channels.clear()

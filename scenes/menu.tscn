@@ -6,9 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://djuy5yvbwang1" path="res://assets/sprites/icons.png" id="4_7jp70"]
 [ext_resource type="PackedScene" uid="uid://dj7hrroalnam7" path="res://prefabs/tv_antenna.tscn" id="4_i42df"]
 [ext_resource type="Script" uid="uid://dhg1muh52x5l0" path="res://scripts/interest.gd" id="5_7jp70"]
-[ext_resource type="Resource" uid="uid://cuunrvnmb6oym" path="res://resources/interest_cartoon.tres" id="6_mxgkd"]
-[ext_resource type="Resource" uid="uid://mnny2q74ljs5" path="res://resources/interest_movie.tres" id="7_g6gyw"]
-[ext_resource type="Resource" uid="uid://beveyt2dp5b3y" path="res://resources/interest_drama.tres" id="8_3dmrc"]
 [ext_resource type="Script" uid="uid://ghbst2j2hg3" path="res://scripts/main_menu.gd" id="9_ufwb2"]
 [ext_resource type="PackedScene" uid="uid://blb8kba4uy581" path="res://scenes/game.tscn" id="11_i42df"]
 [ext_resource type="Theme" uid="uid://db58y20hoehp8" path="res://theme.tres" id="12_7jp70"]
@@ -85,7 +82,7 @@ shader_parameter/cloud_power = 1.0
 shader_parameter/multiply_cloud = true
 shader_parameter/clouds_noise = SubResource("NoiseTexture2D_trtic")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mxgkd"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6cdou"]
 resource_local_to_scene = true
 shader = ExtResource("3_i42df")
 shader_parameter/background_color = Color(0, 0, 0, 1)
@@ -179,7 +176,7 @@ modulate = Color(0.18269998, 0.87, 0.4232551, 1)
 visible = false
 
 [node name="Progress" parent="Scenario/Houses/House/UI/NinePatchRect" parent_id_path=PackedInt32Array(1085918880, 761430639) index="0" unique_id=1756235201]
-material = SubResource("ShaderMaterial_mxgkd")
+material = SubResource("ShaderMaterial_6cdou")
 
 [node name="Grass" type="Node2D" parent="Scenario" unique_id=1336957973]
 script = SubResource("GDScript_kvpfn")
@@ -544,7 +541,7 @@ process_mode = 4
 physics_interpolation_mode = 2
 position = Vector2(-351.99997, 103.99999)
 scale = Vector2(0.18505642, 0.2)
-acceptable_interests = Array[ExtResource("5_7jp70")]([ExtResource("6_mxgkd"), ExtResource("7_g6gyw"), ExtResource("8_3dmrc")])
+acceptable_interests = Array[ExtResource("5_7jp70")]([])
 house = NodePath("../../Houses/House")
 
 [node name="Head" parent="Scenario/Antenna/TV_Antenna" index="1" unique_id=1676430055]
