@@ -8,40 +8,66 @@
 [ext_resource type="Resource" uid="uid://bdi2y86je80oh" path="res://resources/interest_sports.tres" id="5_gee14"]
 [ext_resource type="Resource" uid="uid://cuunrvnmb6oym" path="res://resources/interest_cartoon.tres" id="6_0tnpc"]
 [ext_resource type="Resource" uid="uid://beveyt2dp5b3y" path="res://resources/interest_drama.tres" id="7_vtaks"]
+[ext_resource type="PackedScene" uid="uid://tqvckvutc3s7" path="res://prefabs/house.tscn" id="9_0tnpc"]
 
 [node name="Node2D" type="Node2D" unique_id=867534550]
+
+[node name="Scenario" type="Node2D" parent="." unique_id=981728001]
+
+[node name="Houses" type="Node2D" parent="Scenario" unique_id=1248918203]
+
+[node name="House" parent="Scenario/Houses" unique_id=1085918880 instance=ExtResource("9_0tnpc")]
+position = Vector2(-376, 368)
+scale = Vector2(0.25, 0.25)
+
+[node name="House2" parent="Scenario/Houses" unique_id=2041218654 instance=ExtResource("9_0tnpc")]
+position = Vector2(-8, 368)
+scale = Vector2(0.25, 0.25)
+
+[node name="House3" parent="Scenario/Houses" unique_id=1526619360 instance=ExtResource("9_0tnpc")]
+position = Vector2(368, 368)
+scale = Vector2(0.25, 0.25)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1101897568]
 position = Vector2(0, 72)
 
-[node name="TV_Antenna" parent="." unique_id=1073357383 instance=ExtResource("1_yqjtg")]
-position = Vector2(-7.9999995, 121.99999)
-acceptable_interests = Array[ExtResource("3_feb5d")]([ExtResource("6_0tnpc"), ExtResource("4_u5sy4"), ExtResource("7_vtaks")])
+[node name="Channels" type="Node2D" parent="." unique_id=2082271592]
 
-[node name="TV_Antenna2" parent="." unique_id=2053965206 instance=ExtResource("1_yqjtg")]
-position = Vector2(-216.00003, 111.99999)
-acceptable_interests = Array[ExtResource("3_feb5d")]([ExtResource("4_u5sy4"), ExtResource("7_vtaks"), ExtResource("5_gee14")])
-
-[node name="TV_Antenna3" parent="." unique_id=1246153024 instance=ExtResource("1_yqjtg")]
-position = Vector2(216, 112.00001)
-acceptable_interests = Array[ExtResource("3_feb5d")]([ExtResource("6_0tnpc"), ExtResource("3_lbhrr"), ExtResource("5_gee14")])
-
-[node name="InterestChannel" parent="." unique_id=19260816 instance=ExtResource("3_lnu2h")]
+[node name="InterestChannel" parent="Channels" unique_id=19260816 instance=ExtResource("3_lnu2h")]
 position = Vector2(-288, -104.00001)
 interest = ExtResource("3_lbhrr")
+metadata/_edit_lock_ = true
 
-[node name="InterestChannel2" parent="." unique_id=2080618144 instance=ExtResource("3_lnu2h")]
+[node name="InterestChannel2" parent="Channels" unique_id=2080618144 instance=ExtResource("3_lnu2h")]
 position = Vector2(264, -104)
 interest = ExtResource("4_u5sy4")
+metadata/_edit_lock_ = true
 
-[node name="InterestChannel3" parent="." unique_id=1435998991 instance=ExtResource("3_lnu2h")]
+[node name="InterestChannel3" parent="Channels" unique_id=1435998991 instance=ExtResource("3_lnu2h")]
 position = Vector2(112, -184)
 interest = ExtResource("5_gee14")
+metadata/_edit_lock_ = true
 
-[node name="InterestChannel4" parent="." unique_id=1328126157 instance=ExtResource("3_lnu2h")]
+[node name="InterestChannel4" parent="Channels" unique_id=1328126157 instance=ExtResource("3_lnu2h")]
 position = Vector2(-8.000004, -200)
 interest = ExtResource("6_0tnpc")
+metadata/_edit_lock_ = true
 
-[node name="InterestChannel5" parent="." unique_id=72220851 instance=ExtResource("3_lnu2h")]
+[node name="InterestChannel5" parent="Channels" unique_id=72220851 instance=ExtResource("3_lnu2h")]
 position = Vector2(-144, -192)
 interest = ExtResource("7_vtaks")
+metadata/_edit_lock_ = true
+
+[node name="Antenna" type="Node2D" parent="." unique_id=1302027677]
+
+[node name="TV_Antenna" parent="Antenna" unique_id=1073357383 instance=ExtResource("1_yqjtg")]
+position = Vector2(-351.99997, 103.99999)
+acceptable_interests = Array[ExtResource("3_feb5d")]([ExtResource("6_0tnpc"), ExtResource("4_u5sy4"), ExtResource("7_vtaks")])
+
+[node name="TV_Antenna2" parent="Antenna" unique_id=2053965206 instance=ExtResource("1_yqjtg")]
+position = Vector2(15.999999, 103.99999)
+acceptable_interests = Array[ExtResource("3_feb5d")]([ExtResource("4_u5sy4"), ExtResource("7_vtaks"), ExtResource("5_gee14")])
+
+[node name="TV_Antenna3" parent="Antenna" unique_id=1246153024 instance=ExtResource("1_yqjtg")]
+position = Vector2(391.99997, 103.99999)
+acceptable_interests = Array[ExtResource("3_feb5d")]([ExtResource("6_0tnpc"), ExtResource("3_lbhrr"), ExtResource("5_gee14")])

@@ -19,6 +19,7 @@ signal stopped_holding
 @onready var head: Marker2D = %Head
 
 var is_holding:bool = false
+var signal_channels :Array[InterestChannel] =[]
 
 func _ready() -> void:
 	set_color(null, false)
@@ -50,7 +51,7 @@ func select_random_interest() -> void:
 
 
 func set_color(interest_channel:InterestChannel, is_entering:bool) -> void:
-	if not is_entering:
+	if not is_entering and signal_channels.is_empty():
 		tv_signal_sprite.modulate = no_signal_color
 		return
 	
@@ -85,9 +86,11 @@ func _on_mouse_detection_mouse_exited() -> void:
 
 func _on_tv_signal_area_entered(area: Area2D) -> void:
 	if area is InterestChannel:
+		signal_channels.append(area as InterestChannel)
 		set_color(area as InterestChannel, true)
 
 func _on_tv_signal_area_exited(area: Area2D) -> void:
 	if area is InterestChannel:
+		signal_channels.erase(area as InterestChannel)
 		set_color(area as InterestChannel, false)
 #endregion

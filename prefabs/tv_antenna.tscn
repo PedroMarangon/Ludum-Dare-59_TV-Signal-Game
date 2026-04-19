@@ -34,7 +34,7 @@ acceptable_interests = Array[ExtResource("2_yj5mq")]([ExtResource("3_gefff"), Ex
 non_selected_alpha = 0.2
 selected_alpha = 0.5
 
-[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=494679810]
+[node name="BaseSprite" type="Sprite2D" parent="." unique_id=494679810]
 unique_name_in_owner = true
 position = Vector2(0, 105)
 scale = Vector2(0.4999999, 0.4999999)
@@ -60,9 +60,9 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Head/TV_SpriteShader/TV_Area2D" unique_id=444996445]
-polygon = PackedVector2Array(0, 0, -137.8667, -918.9334, -125.33336, -956.5334, -87.73335, -969.0667, -50.133343, -981.60004, 0, -986.30005, 50.133343, -980.0334, 87.73335, -969.0667, 125.33336, -956.5334, 139.43336, -918.9334)
+polygon = PackedVector2Array(0, 0, -126.900024, -912.6668, -112.80002, -950.2668, -87.73335, -969.0667, -50.133343, -981.60004, 0, -986.30005, 50.133343, -980.0334, 87.73335, -969.0667, 112.80002, -950.2668, 125.33336, -912.6668)
 
-[node name="Sprite2D" type="Sprite2D" parent="Head" unique_id=1846191870]
+[node name="HeadSprite" type="Sprite2D" parent="Head" unique_id=1846191870]
 unique_name_in_owner = true
 position = Vector2(0, -22.5)
 scale = Vector2(0.24999999, 0.24999999)
@@ -70,17 +70,17 @@ texture = ExtResource("8_gefff")
 region_enabled = true
 region_rect = Rect2(256, 512, 512, 512)
 
-[node name="MouseDetection" type="Area2D" parent="Head/Sprite2D" unique_id=512800526]
+[node name="MouseDetection" type="Area2D" parent="Head/HeadSprite" unique_id=512800526]
 position = Vector2(0, 49.999992)
 scale = Vector2(1.9999996, 1.9999996)
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Head/Sprite2D/MouseDetection" unique_id=1994333442]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Head/HeadSprite/MouseDetection" unique_id=1994333442]
 shape = SubResource("RectangleShape2D_e2o6t")
 
 [connection signal="area_entered" from="Head/TV_SpriteShader/TV_Area2D" to="." method="_on_tv_signal_area_entered"]
 [connection signal="area_exited" from="Head/TV_SpriteShader/TV_Area2D" to="." method="_on_tv_signal_area_exited"]
-[connection signal="input_event" from="Head/Sprite2D/MouseDetection" to="." method="_on_mouse_detection_input_event"]
-[connection signal="mouse_entered" from="Head/Sprite2D/MouseDetection" to="." method="_on_mouse_detection_mouse_entered"]
-[connection signal="mouse_exited" from="Head/Sprite2D/MouseDetection" to="." method="_on_mouse_detection_mouse_exited"]
+[connection signal="input_event" from="Head/HeadSprite/MouseDetection" to="." method="_on_mouse_detection_input_event"]
+[connection signal="mouse_entered" from="Head/HeadSprite/MouseDetection" to="." method="_on_mouse_detection_mouse_entered"]
+[connection signal="mouse_exited" from="Head/HeadSprite/MouseDetection" to="." method="_on_mouse_detection_mouse_exited"]

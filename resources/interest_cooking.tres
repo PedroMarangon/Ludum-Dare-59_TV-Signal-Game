@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Interest" format=3 uid="uid://c6bpd28kldre7"]
 
-[ext_resource type="Texture2D" uid="uid://djuy5yvbwang1" path="res://assets/sprites.png" id="1_aophn"]
+[ext_resource type="Texture2D" uid="uid://djuy5yvbwang1" path="res://assets/icons.png" id="1_aophn"]
 [ext_resource type="Script" uid="uid://dhg1muh52x5l0" path="res://scripts/interest.gd" id="1_t761p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hkn32"]
