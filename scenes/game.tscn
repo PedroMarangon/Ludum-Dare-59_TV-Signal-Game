@@ -166,7 +166,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_kvpfn")
 hframes = 4
 vframes = 4
-frame = 6
+frame = 3
 metadata/_edit_lock_ = true
 
 [node name="Icons2" type="Sprite2D" parent="Scenario/Grass" unique_id=1801769930]
@@ -176,7 +176,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_kvpfn")
 hframes = 4
 vframes = 4
-frame = 6
+frame = 3
 metadata/_edit_lock_ = true
 
 [node name="Icons3" type="Sprite2D" parent="Scenario/Grass" unique_id=1095454379]
@@ -186,7 +186,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_kvpfn")
 hframes = 4
 vframes = 4
-frame = 6
+frame = 3
 metadata/_edit_lock_ = true
 
 [node name="Icons4" type="Sprite2D" parent="Scenario/Grass" unique_id=490284916]
@@ -196,7 +196,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_kvpfn")
 hframes = 4
 vframes = 4
-frame = 6
+frame = 3
 metadata/_edit_lock_ = true
 
 [node name="Icons5" type="Sprite2D" parent="Scenario/Grass" unique_id=510102533]
@@ -206,7 +206,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_kvpfn")
 hframes = 4
 vframes = 4
-frame = 6
+frame = 3
 metadata/_edit_lock_ = true
 
 [node name="Icons6" type="Sprite2D" parent="Scenario/Grass" unique_id=121241573]
@@ -216,7 +216,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_kvpfn")
 hframes = 4
 vframes = 4
-frame = 6
+frame = 3
 metadata/_edit_lock_ = true
 
 [node name="Icons7" type="Sprite2D" parent="Scenario/Grass" unique_id=493568952]
@@ -226,7 +226,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_kvpfn")
 hframes = 4
 vframes = 4
-frame = 6
+frame = 3
 metadata/_edit_lock_ = true
 
 [node name="Icons8" type="Sprite2D" parent="Scenario/Grass" unique_id=1517888093]
@@ -236,7 +236,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_kvpfn")
 hframes = 4
 vframes = 4
-frame = 6
+frame = 3
 metadata/_edit_lock_ = true
 
 [node name="Icons9" type="Sprite2D" parent="Scenario/Grass" unique_id=1884580156]
@@ -246,7 +246,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_kvpfn")
 hframes = 4
 vframes = 4
-frame = 6
+frame = 3
 metadata/_edit_lock_ = true
 
 [node name="Icons10" type="Sprite2D" parent="Scenario/Grass" unique_id=746056804]
@@ -256,7 +256,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_kvpfn")
 hframes = 4
 vframes = 4
-frame = 6
+frame = 3
 metadata/_edit_lock_ = true
 
 [node name="Icons11" type="Sprite2D" parent="Scenario/Grass" unique_id=430559267]
@@ -266,7 +266,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_kvpfn")
 hframes = 4
 vframes = 4
-frame = 6
+frame = 3
 metadata/_edit_lock_ = true
 
 [node name="Icons12" type="Sprite2D" parent="Scenario/Grass" unique_id=1279760831]
@@ -276,7 +276,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_kvpfn")
 hframes = 4
 vframes = 4
-frame = 6
+frame = 3
 metadata/_edit_lock_ = true
 
 [node name="Icons13" type="Sprite2D" parent="Scenario/Grass" unique_id=985228822]
@@ -286,7 +286,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_kvpfn")
 hframes = 4
 vframes = 4
-frame = 6
+frame = 3
 metadata/_edit_lock_ = true
 
 [node name="Icons24" type="Sprite2D" parent="Scenario/Grass" unique_id=1966678155]
@@ -296,7 +296,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_kvpfn")
 hframes = 4
 vframes = 4
-frame = 6
+frame = 3
 metadata/_edit_lock_ = true
 
 [node name="Icons25" type="Sprite2D" parent="Scenario/Grass" unique_id=536317050]
@@ -306,7 +306,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_kvpfn")
 hframes = 4
 vframes = 4
-frame = 6
+frame = 3
 metadata/_edit_lock_ = true
 
 [node name="Icons26" type="Sprite2D" parent="Scenario/Grass" unique_id=1752178198]
@@ -316,7 +316,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_kvpfn")
 hframes = 4
 vframes = 4
-frame = 6
+frame = 3
 metadata/_edit_lock_ = true
 
 [node name="Icons27" type="Sprite2D" parent="Scenario/Grass" unique_id=911708890]
@@ -326,7 +326,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_kvpfn")
 hframes = 4
 vframes = 4
-frame = 6
+frame = 3
 metadata/_edit_lock_ = true
 
 [node name="Icons28" type="Sprite2D" parent="Scenario/Grass" unique_id=483099793]
@@ -336,7 +336,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_kvpfn")
 hframes = 4
 vframes = 4
-frame = 6
+frame = 3
 metadata/_edit_lock_ = true
 
 [node name="Icons29" type="Sprite2D" parent="Scenario/Grass" unique_id=967924637]
@@ -346,7 +346,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_kvpfn")
 hframes = 4
 vframes = 4
-frame = 6
+frame = 3
 metadata/_edit_lock_ = true
 
 [node name="Icons30" type="Sprite2D" parent="Scenario/Grass" unique_id=1446164350]
@@ -356,7 +356,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_kvpfn")
 hframes = 4
 vframes = 4
-frame = 6
+frame = 3
 metadata/_edit_lock_ = true
 
 [node name="Icons31" type="Sprite2D" parent="Scenario/Grass" unique_id=2023036088]
@@ -366,7 +366,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_kvpfn")
 hframes = 4
 vframes = 4
-frame = 6
+frame = 3
 metadata/_edit_lock_ = true
 
 [node name="Icons32" type="Sprite2D" parent="Scenario/Grass" unique_id=1532009451]
@@ -376,7 +376,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_kvpfn")
 hframes = 4
 vframes = 4
-frame = 6
+frame = 3
 metadata/_edit_lock_ = true
 
 [node name="Icons33" type="Sprite2D" parent="Scenario/Grass" unique_id=124226864]
@@ -386,7 +386,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_kvpfn")
 hframes = 4
 vframes = 4
-frame = 6
+frame = 3
 metadata/_edit_lock_ = true
 
 [node name="Icons34" type="Sprite2D" parent="Scenario/Grass" unique_id=1058768127]
@@ -396,7 +396,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_kvpfn")
 hframes = 4
 vframes = 4
-frame = 6
+frame = 3
 metadata/_edit_lock_ = true
 
 [node name="Icons35" type="Sprite2D" parent="Scenario/Grass" unique_id=1443942625]
@@ -406,7 +406,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_kvpfn")
 hframes = 4
 vframes = 4
-frame = 6
+frame = 3
 metadata/_edit_lock_ = true
 
 [node name="Icons14" type="Sprite2D" parent="Scenario/Grass" unique_id=1794954350]
@@ -416,7 +416,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_kvpfn")
 hframes = 4
 vframes = 4
-frame = 6
+frame = 3
 metadata/_edit_lock_ = true
 
 [node name="Icons15" type="Sprite2D" parent="Scenario/Grass" unique_id=1212840101]
@@ -426,7 +426,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_kvpfn")
 hframes = 4
 vframes = 4
-frame = 6
+frame = 3
 metadata/_edit_lock_ = true
 
 [node name="Icons16" type="Sprite2D" parent="Scenario/Grass" unique_id=1157292912]
@@ -436,7 +436,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_kvpfn")
 hframes = 4
 vframes = 4
-frame = 6
+frame = 3
 metadata/_edit_lock_ = true
 
 [node name="Icons17" type="Sprite2D" parent="Scenario/Grass" unique_id=1377718247]
@@ -446,7 +446,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_kvpfn")
 hframes = 4
 vframes = 4
-frame = 6
+frame = 3
 metadata/_edit_lock_ = true
 
 [node name="Icons18" type="Sprite2D" parent="Scenario/Grass" unique_id=488610133]
@@ -456,7 +456,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_kvpfn")
 hframes = 4
 vframes = 4
-frame = 6
+frame = 3
 metadata/_edit_lock_ = true
 
 [node name="Icons19" type="Sprite2D" parent="Scenario/Grass" unique_id=1963607597]
@@ -466,7 +466,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_kvpfn")
 hframes = 4
 vframes = 4
-frame = 6
+frame = 3
 metadata/_edit_lock_ = true
 
 [node name="Icons20" type="Sprite2D" parent="Scenario/Grass" unique_id=1093070288]
@@ -476,7 +476,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_kvpfn")
 hframes = 4
 vframes = 4
-frame = 6
+frame = 3
 metadata/_edit_lock_ = true
 
 [node name="Icons21" type="Sprite2D" parent="Scenario/Grass" unique_id=753071105]
@@ -486,7 +486,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_kvpfn")
 hframes = 4
 vframes = 4
-frame = 6
+frame = 3
 metadata/_edit_lock_ = true
 
 [node name="Icons22" type="Sprite2D" parent="Scenario/Grass" unique_id=1214692762]
@@ -496,7 +496,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_kvpfn")
 hframes = 4
 vframes = 4
-frame = 6
+frame = 3
 metadata/_edit_lock_ = true
 
 [node name="Icons23" type="Sprite2D" parent="Scenario/Grass" unique_id=1150115135]
@@ -506,7 +506,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_kvpfn")
 hframes = 4
 vframes = 4
-frame = 6
+frame = 3
 metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1101897568]
@@ -514,41 +514,39 @@ position = Vector2(0, 72)
 
 [node name="Antenna" type="Node2D" parent="." unique_id=1302027677]
 
-[node name="TV_Antenna" parent="Antenna" unique_id=1073357383 instance=ExtResource("1_yqjtg")]
+[node name="TV_Antenna" parent="Antenna" unique_id=1073357383 node_paths=PackedStringArray("house") instance=ExtResource("1_yqjtg")]
 position = Vector2(-351.99997, 103.99999)
-acceptable_interests = Array[ExtResource("3_feb5d")]([ExtResource("6_0tnpc"), ExtResource("4_u5sy4"), ExtResource("7_vtaks")])
+acceptable_interests = Array[ExtResource("3_feb5d")]([ExtResource("6_0tnpc"), ExtResource("3_lbhrr"), ExtResource("7_vtaks")])
+house = NodePath("../../Scenario/Houses/House")
 
-[node name="TV_Antenna2" parent="Antenna" unique_id=2053965206 instance=ExtResource("1_yqjtg")]
+[node name="TV_Antenna2" parent="Antenna" unique_id=2053965206 node_paths=PackedStringArray("house") instance=ExtResource("1_yqjtg")]
 position = Vector2(15.999999, 103.99999)
 acceptable_interests = Array[ExtResource("3_feb5d")]([ExtResource("4_u5sy4"), ExtResource("7_vtaks"), ExtResource("5_gee14")])
+house = NodePath("../../Scenario/Houses/House2")
 
-[node name="TV_Antenna3" parent="Antenna" unique_id=1246153024 instance=ExtResource("1_yqjtg")]
+[node name="TV_Antenna3" parent="Antenna" unique_id=1246153024 node_paths=PackedStringArray("house") instance=ExtResource("1_yqjtg")]
 position = Vector2(391.99997, 103.99999)
-acceptable_interests = Array[ExtResource("3_feb5d")]([ExtResource("6_0tnpc"), ExtResource("3_lbhrr"), ExtResource("5_gee14")])
+acceptable_interests = Array[ExtResource("3_feb5d")]([ExtResource("6_0tnpc"), ExtResource("7_vtaks"), ExtResource("5_gee14")])
+house = NodePath("../../Scenario/Houses/House3")
 
 [node name="Channels" type="Node2D" parent="." unique_id=2082271592]
 
 [node name="InterestChannel" parent="Channels" unique_id=19260816 instance=ExtResource("3_lnu2h")]
-position = Vector2(-288, -104.00001)
+position = Vector2(-300, -104)
 interest = ExtResource("3_lbhrr")
-metadata/_edit_lock_ = true
 
 [node name="InterestChannel2" parent="Channels" unique_id=2080618144 instance=ExtResource("3_lnu2h")]
-position = Vector2(264, -104)
+position = Vector2(311, -94.00001)
 interest = ExtResource("4_u5sy4")
-metadata/_edit_lock_ = true
 
 [node name="InterestChannel3" parent="Channels" unique_id=1435998991 instance=ExtResource("3_lnu2h")]
-position = Vector2(112, -184)
+position = Vector2(169, -191)
 interest = ExtResource("5_gee14")
-metadata/_edit_lock_ = true
 
 [node name="InterestChannel4" parent="Channels" unique_id=1328126157 instance=ExtResource("3_lnu2h")]
-position = Vector2(-8.000004, -200)
+position = Vector2(-9, -236.00002)
 interest = ExtResource("6_0tnpc")
-metadata/_edit_lock_ = true
 
 [node name="InterestChannel5" parent="Channels" unique_id=72220851 instance=ExtResource("3_lnu2h")]
-position = Vector2(-144, -192)
+position = Vector2(-180, -193.00002)
 interest = ExtResource("7_vtaks")
-metadata/_edit_lock_ = true

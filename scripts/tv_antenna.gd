@@ -2,7 +2,8 @@ class_name TV_Antenna extends Node2D
 
 signal stopped_holding
 
-@export var angle :float = 45
+@export_group("Logic")
+@export_range(0, 90 ,1.0) var angle :float = 45
 @export var speed :float = 50.0
 @export var acceptable_interests :Array[Interest]
 @export var current_interest :Interest
@@ -13,6 +14,9 @@ signal stopped_holding
 @export var correct_signal_color :Color = Color.GREEN
 @export_range(0.0, 1.0, 0.1) var non_selected_alpha :float = 0.5
 @export_range(0.0, 1.0, 0.1) var selected_alpha :float = 0.75
+
+@export_group("Connections")
+@export var house :House
 
 @onready var sprite_2d: Sprite2D = %Sprite2D
 @onready var tv_signal_sprite: Sprite2D = %TV_SpriteShader
@@ -48,6 +52,7 @@ func update_rotation(delta:float) -> void:
 
 func select_random_interest() -> void:
 	current_interest = acceptable_interests.pick_random()
+	house.switch_content(current_interest)
 
 
 func set_color(interest_channel:InterestChannel, is_entering:bool) -> void:

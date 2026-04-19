@@ -9,8 +9,9 @@ shader = ExtResource("2_mglew")
 shader_parameter/offset = Vector2(0, 0)
 shader_parameter/angle = 360.0
 shader_parameter/angle_edge = 3.0
+shader_parameter/edge_smoothness = Vector2(0.5, 0.4)
 shader_parameter/ring_frequency = 100.0
-shader_parameter/ring_width = 0.99
+shader_parameter/ring_width = 0.8750000415625
 shader_parameter/move_speed = -10.0
 shader_parameter/smooth_edge = true
 shader_parameter/smooth_edge_angle = false
@@ -25,7 +26,7 @@ collision_mask = 2
 script = ExtResource("1_6ry06")
 
 [node name="Visual_SignalTransmission" type="Sprite2D" parent="." unique_id=367056186]
-modulate = Color(1, 1, 1, 0.3647059)
+modulate = Color(1, 1, 1, 0.11764706)
 material = SubResource("ShaderMaterial_c03o3")
 scale = Vector2(4, 4)
 texture = ExtResource("2_3l7xn")

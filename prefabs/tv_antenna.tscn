@@ -16,6 +16,7 @@ shader = ExtResource("3_ewu38")
 shader_parameter/offset = Vector2(0, -0.5)
 shader_parameter/angle = 6.0
 shader_parameter/angle_edge = 3.0
+shader_parameter/edge_smoothness = Vector2(0.5, 0.49)
 shader_parameter/ring_frequency = 600.0
 shader_parameter/ring_width = 0.90000004275
 shader_parameter/move_speed = -10.0
@@ -61,7 +62,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Head/TV_SpriteShader/TV_Area2D" unique_id=444996445]
-polygon = PackedVector2Array(0, 0, -126.900024, -912.6668, -112.80002, -950.2668, -87.73335, -969.0667, -50.133343, -981.60004, 0, -986.30005, 50.133343, -980.0334, 87.73335, -969.0667, 112.80002, -950.2668, 125.33336, -912.6668)
+polygon = PackedVector2Array(0, 0, -140.59807, -950.2667, -120.51263, -969.0667, -100.427185, -981.6001, -60.256313, -994.1334, 0, -1000.4, 60.256313, -994.1334, 100.427185, -981.6001, 120.51263, -969.0667, 140.59807, -950.2667)
 
 [node name="HeadSprite" type="Sprite2D" parent="Head" unique_id=1846191870]
 unique_name_in_owner = true
