@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://blb8kba4uy581"]
 
+[ext_resource type="Shader" uid="uid://dw32vddpa3wni" path="res://shaders/bg_stars.gdshader" id="1_vtaks"]
 [ext_resource type="PackedScene" uid="uid://dj7hrroalnam7" path="res://prefabs/tv_antenna.tscn" id="1_yqjtg"]
 [ext_resource type="Script" uid="uid://dhg1muh52x5l0" path="res://scripts/interest.gd" id="3_feb5d"]
+[ext_resource type="Texture2D" uid="uid://djuy5yvbwang1" path="res://assets/icons.png" id="3_kvpfn"]
 [ext_resource type="Resource" uid="uid://mnny2q74ljs5" path="res://resources/interest_movie.tres" id="3_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://wo721h5vxll1" path="res://prefabs/interest.tscn" id="3_lnu2h"]
 [ext_resource type="Resource" uid="uid://c6bpd28kldre7" path="res://resources/interest_cooking.tres" id="4_u5sy4"]
@@ -10,26 +12,519 @@
 [ext_resource type="Resource" uid="uid://beveyt2dp5b3y" path="res://resources/interest_drama.tres" id="7_vtaks"]
 [ext_resource type="PackedScene" uid="uid://tqvckvutc3s7" path="res://prefabs/house.tscn" id="9_0tnpc"]
 
+[sub_resource type="Gradient" id="Gradient_vtaks"]
+offsets = PackedFloat32Array(0.672043, 0.79569894)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_kvpfn"]
+noise_type = 5
+frequency = 0.0115
+offset = Vector3(-208, 0, 0)
+domain_warp_enabled = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dinhu"]
+width = 1328
+height = 680
+noise = SubResource("FastNoiseLite_kvpfn")
+color_ramp = SubResource("Gradient_vtaks")
+seamless = true
+
+[sub_resource type="Gradient" id="Gradient_kvpfn"]
+offsets = PackedFloat32Array(0.7607527, 0.85215056)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_dinhu"]
+frequency = 0.1686
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_kvuet"]
+width = 1328
+height = 680
+generate_mipmaps = false
+noise = SubResource("FastNoiseLite_dinhu")
+color_ramp = SubResource("Gradient_kvpfn")
+seamless = true
+normalize = false
+seamless_blend_skirt = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kvpfn"]
+shader = ExtResource("1_vtaks")
+shader_parameter/star_noise = SubResource("NoiseTexture2D_kvuet")
+shader_parameter/speed = 1.0
+shader_parameter/cloud_power = 0.05
+shader_parameter/multiply_cloud = false
+shader_parameter/clouds_noise = SubResource("NoiseTexture2D_dinhu")
+
+[sub_resource type="Gradient" id="Gradient_dinhu"]
+colors = PackedColorArray(0.62, 0.62, 0.62, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_kvuet"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_trtic"]
+width = 1328
+height = 84
+noise = SubResource("FastNoiseLite_kvuet")
+color_ramp = SubResource("Gradient_dinhu")
+
+[sub_resource type="Gradient" id="Gradient_ir15t"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ca42v"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rysoc"]
+noise = SubResource("FastNoiseLite_ca42v")
+color_ramp = SubResource("Gradient_ir15t")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ssvqc"]
+shader = ExtResource("1_vtaks")
+shader_parameter/star_noise = SubResource("NoiseTexture2D_rysoc")
+shader_parameter/speed = 0.0
+shader_parameter/cloud_power = 1.0
+shader_parameter/multiply_cloud = true
+shader_parameter/clouds_noise = SubResource("NoiseTexture2D_trtic")
+
+[sub_resource type="GDScript" id="GDScript_kvpfn"]
+resource_name = "grass_randomizer"
+script/source = "extends Node2D
+
+
+@export_range(0.0, 15.0, 0.1) var skew_random:float = 1.0
+@export_range(0.0, 5.0, 0.1) var rotation_random:float = 1.0
+@export_range(0.0, 0.1, 0.05) var scale_random:float = 0.05
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	for grass:Sprite2D in get_children():
+		grass.skew += randf_range(-skew_random, skew_random)
+		grass.rotation_degrees += randf_range(-rotation_random, rotation_random)
+		grass.scale += Vector2.ONE * randf_range(-scale_random, scale_random)
+		grass.flip_h = randf() > 0.5
+"
+
 [node name="Node2D" type="Node2D" unique_id=867534550]
 
 [node name="Scenario" type="Node2D" parent="." unique_id=981728001]
 
+[node name="ColorRect" type="ColorRect" parent="Scenario" unique_id=992477206]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_kvpfn")
+offset_left = -664.0
+offset_top = -312.0
+offset_right = 664.0
+offset_bottom = 368.0
+mouse_filter = 2
+color = Color(0.0195, 0.06300002, 0.15, 1)
+metadata/_edit_lock_ = true
+
+[node name="ColorRect2" type="ColorRect" parent="Scenario" unique_id=910266924]
+texture_repeat = 2
+offset_left = -664.0
+offset_top = 362.0
+offset_right = 664.0
+offset_bottom = 448.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="ColorRect3" type="ColorRect" parent="Scenario" unique_id=169102404]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_ssvqc")
+offset_left = -664.0
+offset_top = 364.0
+offset_right = 664.0
+offset_bottom = 448.0
+mouse_filter = 2
+color = Color(0.007297091, 0.11868266, 0.08589352, 1)
+metadata/_edit_lock_ = true
+
 [node name="Houses" type="Node2D" parent="Scenario" unique_id=1248918203]
+metadata/_edit_lock_ = true
 
 [node name="House" parent="Scenario/Houses" unique_id=1085918880 instance=ExtResource("9_0tnpc")]
 position = Vector2(-376, 368)
 scale = Vector2(0.25, 0.25)
+metadata/_edit_lock_ = true
 
 [node name="House2" parent="Scenario/Houses" unique_id=2041218654 instance=ExtResource("9_0tnpc")]
 position = Vector2(-8, 368)
 scale = Vector2(0.25, 0.25)
+metadata/_edit_lock_ = true
 
 [node name="House3" parent="Scenario/Houses" unique_id=1526619360 instance=ExtResource("9_0tnpc")]
 position = Vector2(368, 368)
 scale = Vector2(0.25, 0.25)
+metadata/_edit_lock_ = true
+
+[node name="Grass" type="Node2D" parent="Scenario" unique_id=1336957973]
+script = SubResource("GDScript_kvpfn")
+skew_random = 0.5
+rotation_random = 0.5
+metadata/_edit_lock_ = true
+
+[node name="Icons" type="Sprite2D" parent="Scenario/Grass" unique_id=1631389302]
+modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
+position = Vector2(-624, 358)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_kvpfn")
+hframes = 4
+vframes = 4
+frame = 6
+metadata/_edit_lock_ = true
+
+[node name="Icons2" type="Sprite2D" parent="Scenario/Grass" unique_id=1801769930]
+modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
+position = Vector2(-590, 354)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_kvpfn")
+hframes = 4
+vframes = 4
+frame = 6
+metadata/_edit_lock_ = true
+
+[node name="Icons3" type="Sprite2D" parent="Scenario/Grass" unique_id=1095454379]
+modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
+position = Vector2(-394, 364)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_kvpfn")
+hframes = 4
+vframes = 4
+frame = 6
+metadata/_edit_lock_ = true
+
+[node name="Icons4" type="Sprite2D" parent="Scenario/Grass" unique_id=490284916]
+modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
+position = Vector2(-242.00002, 359)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_kvpfn")
+hframes = 4
+vframes = 4
+frame = 6
+metadata/_edit_lock_ = true
+
+[node name="Icons5" type="Sprite2D" parent="Scenario/Grass" unique_id=510102533]
+modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
+position = Vector2(-263, 365)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_kvpfn")
+hframes = 4
+vframes = 4
+frame = 6
+metadata/_edit_lock_ = true
+
+[node name="Icons6" type="Sprite2D" parent="Scenario/Grass" unique_id=121241573]
+modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
+position = Vector2(-185, 369)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_kvpfn")
+hframes = 4
+vframes = 4
+frame = 6
+metadata/_edit_lock_ = true
+
+[node name="Icons7" type="Sprite2D" parent="Scenario/Grass" unique_id=493568952]
+modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
+position = Vector2(-213, 357)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_kvpfn")
+hframes = 4
+vframes = 4
+frame = 6
+metadata/_edit_lock_ = true
+
+[node name="Icons8" type="Sprite2D" parent="Scenario/Grass" unique_id=1517888093]
+modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
+position = Vector2(-88.00001, 368)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_kvpfn")
+hframes = 4
+vframes = 4
+frame = 6
+metadata/_edit_lock_ = true
+
+[node name="Icons9" type="Sprite2D" parent="Scenario/Grass" unique_id=1884580156]
+modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
+position = Vector2(-37.000004, 363)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_kvpfn")
+hframes = 4
+vframes = 4
+frame = 6
+metadata/_edit_lock_ = true
+
+[node name="Icons10" type="Sprite2D" parent="Scenario/Grass" unique_id=746056804]
+modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
+position = Vector2(24.999996, 364)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_kvpfn")
+hframes = 4
+vframes = 4
+frame = 6
+metadata/_edit_lock_ = true
+
+[node name="Icons11" type="Sprite2D" parent="Scenario/Grass" unique_id=430559267]
+modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
+position = Vector2(235, 402)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_kvpfn")
+hframes = 4
+vframes = 4
+frame = 6
+metadata/_edit_lock_ = true
+
+[node name="Icons12" type="Sprite2D" parent="Scenario/Grass" unique_id=1279760831]
+modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
+position = Vector2(181.99998, 395.8)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_kvpfn")
+hframes = 4
+vframes = 4
+frame = 6
+metadata/_edit_lock_ = true
+
+[node name="Icons13" type="Sprite2D" parent="Scenario/Grass" unique_id=985228822]
+modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
+position = Vector2(200, 362)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_kvpfn")
+hframes = 4
+vframes = 4
+frame = 6
+metadata/_edit_lock_ = true
+
+[node name="Icons24" type="Sprite2D" parent="Scenario/Grass" unique_id=1966678155]
+modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
+position = Vector2(-157.19998, 395.8)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_kvpfn")
+hframes = 4
+vframes = 4
+frame = 6
+metadata/_edit_lock_ = true
+
+[node name="Icons25" type="Sprite2D" parent="Scenario/Grass" unique_id=536317050]
+modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
+position = Vector2(-106.19998, 390.8)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_kvpfn")
+hframes = 4
+vframes = 4
+frame = 6
+metadata/_edit_lock_ = true
+
+[node name="Icons26" type="Sprite2D" parent="Scenario/Grass" unique_id=1752178198]
+modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
+position = Vector2(-44.199986, 391.8)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_kvpfn")
+hframes = 4
+vframes = 4
+frame = 6
+metadata/_edit_lock_ = true
+
+[node name="Icons27" type="Sprite2D" parent="Scenario/Grass" unique_id=911708890]
+modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
+position = Vector2(46.800003, 388.8)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_kvpfn")
+hframes = 4
+vframes = 4
+frame = 6
+metadata/_edit_lock_ = true
+
+[node name="Icons28" type="Sprite2D" parent="Scenario/Grass" unique_id=483099793]
+modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
+position = Vector2(98.80002, 407.8)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_kvpfn")
+hframes = 4
+vframes = 4
+frame = 6
+metadata/_edit_lock_ = true
+
+[node name="Icons29" type="Sprite2D" parent="Scenario/Grass" unique_id=967924637]
+modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
+position = Vector2(144.8, 405.59998)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_kvpfn")
+hframes = 4
+vframes = 4
+frame = 6
+metadata/_edit_lock_ = true
+
+[node name="Icons30" type="Sprite2D" parent="Scenario/Grass" unique_id=1446164350]
+modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
+position = Vector2(-571.2, 403.8)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_kvpfn")
+hframes = 4
+vframes = 4
+frame = 6
+metadata/_edit_lock_ = true
+
+[node name="Icons31" type="Sprite2D" parent="Scenario/Grass" unique_id=2023036088]
+modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
+position = Vector2(-520.2, 398.8)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_kvpfn")
+hframes = 4
+vframes = 4
+frame = 6
+metadata/_edit_lock_ = true
+
+[node name="Icons32" type="Sprite2D" parent="Scenario/Grass" unique_id=1532009451]
+modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
+position = Vector2(-458.2, 399.8)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_kvpfn")
+hframes = 4
+vframes = 4
+frame = 6
+metadata/_edit_lock_ = true
+
+[node name="Icons33" type="Sprite2D" parent="Scenario/Grass" unique_id=124226864]
+modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
+position = Vector2(-367.2, 396.8)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_kvpfn")
+hframes = 4
+vframes = 4
+frame = 6
+metadata/_edit_lock_ = true
+
+[node name="Icons34" type="Sprite2D" parent="Scenario/Grass" unique_id=1058768127]
+modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
+position = Vector2(-315.2, 415.8)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_kvpfn")
+hframes = 4
+vframes = 4
+frame = 6
+metadata/_edit_lock_ = true
+
+[node name="Icons35" type="Sprite2D" parent="Scenario/Grass" unique_id=1443942625]
+modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
+position = Vector2(-283.2, 397.8)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_kvpfn")
+hframes = 4
+vframes = 4
+frame = 6
+metadata/_edit_lock_ = true
+
+[node name="Icons14" type="Sprite2D" parent="Scenario/Grass" unique_id=1794954350]
+modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
+position = Vector2(313, 377)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_kvpfn")
+hframes = 4
+vframes = 4
+frame = 6
+metadata/_edit_lock_ = true
+
+[node name="Icons15" type="Sprite2D" parent="Scenario/Grass" unique_id=1212840101]
+modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
+position = Vector2(348, 407)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_kvpfn")
+hframes = 4
+vframes = 4
+frame = 6
+metadata/_edit_lock_ = true
+
+[node name="Icons16" type="Sprite2D" parent="Scenario/Grass" unique_id=1157292912]
+modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
+position = Vector2(347, 365)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_kvpfn")
+hframes = 4
+vframes = 4
+frame = 6
+metadata/_edit_lock_ = true
+
+[node name="Icons17" type="Sprite2D" parent="Scenario/Grass" unique_id=1377718247]
+modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
+position = Vector2(425, 363)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_kvpfn")
+hframes = 4
+vframes = 4
+frame = 6
+metadata/_edit_lock_ = true
+
+[node name="Icons18" type="Sprite2D" parent="Scenario/Grass" unique_id=488610133]
+modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
+position = Vector2(471, 377)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_kvpfn")
+hframes = 4
+vframes = 4
+frame = 6
+metadata/_edit_lock_ = true
+
+[node name="Icons19" type="Sprite2D" parent="Scenario/Grass" unique_id=1963607597]
+modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
+position = Vector2(502, 360)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_kvpfn")
+hframes = 4
+vframes = 4
+frame = 6
+metadata/_edit_lock_ = true
+
+[node name="Icons20" type="Sprite2D" parent="Scenario/Grass" unique_id=1093070288]
+modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
+position = Vector2(543, 360)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_kvpfn")
+hframes = 4
+vframes = 4
+frame = 6
+metadata/_edit_lock_ = true
+
+[node name="Icons21" type="Sprite2D" parent="Scenario/Grass" unique_id=753071105]
+modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
+position = Vector2(588, 383)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_kvpfn")
+hframes = 4
+vframes = 4
+frame = 6
+metadata/_edit_lock_ = true
+
+[node name="Icons22" type="Sprite2D" parent="Scenario/Grass" unique_id=1214692762]
+modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
+position = Vector2(525, 414)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_kvpfn")
+hframes = 4
+vframes = 4
+frame = 6
+metadata/_edit_lock_ = true
+
+[node name="Icons23" type="Sprite2D" parent="Scenario/Grass" unique_id=1150115135]
+modulate = Color(0.007843138, 0.11764706, 0.08627451, 1)
+position = Vector2(631, 360)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_kvpfn")
+hframes = 4
+vframes = 4
+frame = 6
+metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1101897568]
 position = Vector2(0, 72)
+
+[node name="Antenna" type="Node2D" parent="." unique_id=1302027677]
+
+[node name="TV_Antenna" parent="Antenna" unique_id=1073357383 instance=ExtResource("1_yqjtg")]
+position = Vector2(-351.99997, 103.99999)
+acceptable_interests = Array[ExtResource("3_feb5d")]([ExtResource("6_0tnpc"), ExtResource("4_u5sy4"), ExtResource("7_vtaks")])
+
+[node name="TV_Antenna2" parent="Antenna" unique_id=2053965206 instance=ExtResource("1_yqjtg")]
+position = Vector2(15.999999, 103.99999)
+acceptable_interests = Array[ExtResource("3_feb5d")]([ExtResource("4_u5sy4"), ExtResource("7_vtaks"), ExtResource("5_gee14")])
+
+[node name="TV_Antenna3" parent="Antenna" unique_id=1246153024 instance=ExtResource("1_yqjtg")]
+position = Vector2(391.99997, 103.99999)
+acceptable_interests = Array[ExtResource("3_feb5d")]([ExtResource("6_0tnpc"), ExtResource("3_lbhrr"), ExtResource("5_gee14")])
 
 [node name="Channels" type="Node2D" parent="." unique_id=2082271592]
 
@@ -57,17 +552,3 @@ metadata/_edit_lock_ = true
 position = Vector2(-144, -192)
 interest = ExtResource("7_vtaks")
 metadata/_edit_lock_ = true
-
-[node name="Antenna" type="Node2D" parent="." unique_id=1302027677]
-
-[node name="TV_Antenna" parent="Antenna" unique_id=1073357383 instance=ExtResource("1_yqjtg")]
-position = Vector2(-351.99997, 103.99999)
-acceptable_interests = Array[ExtResource("3_feb5d")]([ExtResource("6_0tnpc"), ExtResource("4_u5sy4"), ExtResource("7_vtaks")])
-
-[node name="TV_Antenna2" parent="Antenna" unique_id=2053965206 instance=ExtResource("1_yqjtg")]
-position = Vector2(15.999999, 103.99999)
-acceptable_interests = Array[ExtResource("3_feb5d")]([ExtResource("4_u5sy4"), ExtResource("7_vtaks"), ExtResource("5_gee14")])
-
-[node name="TV_Antenna3" parent="Antenna" unique_id=1246153024 instance=ExtResource("1_yqjtg")]
-position = Vector2(391.99997, 103.99999)
-acceptable_interests = Array[ExtResource("3_feb5d")]([ExtResource("6_0tnpc"), ExtResource("3_lbhrr"), ExtResource("5_gee14")])

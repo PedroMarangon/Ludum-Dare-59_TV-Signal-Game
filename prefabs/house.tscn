@@ -1,27 +1,11 @@
 [gd_scene format=3 uid="uid://tqvckvutc3s7"]
 
 [ext_resource type="Texture2D" uid="uid://cgn8646i41vre" path="res://assets/house.png" id="1_25t6t"]
-
-[sub_resource type="GDScript" id="GDScript_25t6t"]
-resource_name = "house_sprite"
-script/source = "@tool
-class_name HouseSprite extends Node2D
-
-@export_group(\"Colors\")
-@export var random_color :bool = true
-@export var colors :Array[Color] = [Color.WHITE]
-@export var single_color :Color = Color.WHITE
-
-@onready var walls: Sprite2D = %Walls
-
-func _ready() -> void:
-	if Engine.is_editor_hint():
-		return
-	%Walls.modulate = colors.pick_random() if random_color else single_color
-"
+[ext_resource type="Script" uid="uid://covx8d63hxbjn" path="res://scripts/house.gd" id="1_o8sle"]
 
 [node name="House" type="Node2D" unique_id=1085918880]
-script = SubResource("GDScript_25t6t")
+modulate = Color(0.3723, 0.41360998, 0.51, 1)
+script = ExtResource("1_o8sle")
 colors = Array[Color]([Color(1, 1, 1, 1), Color(0.87, 0.36540002, 0.36540002, 1), Color(0.22399999, 0.7, 0.2795334, 1), Color(0.49679998, 0.8635734, 0.92, 1), Color(0.87, 0.68817, 0.29579997, 1), Color(0.94298315, 0.6430187, 0.42626217, 1), Color(0.11436529, 0.5325902, 0.8918933, 1), Color(0.9288484, 0.687854, 0.82112277, 1), Color(0.62152386, 0.62152386, 0.6215238, 1), Color(0.9625718, 0.529497, 0.31080335, 1)])
 
 [node name="Walls" type="Sprite2D" parent="." unique_id=51530623]
@@ -44,7 +28,3 @@ position = Vector2(0, -768)
 texture = ExtResource("1_25t6t")
 hframes = 2
 vframes = 2
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="." unique_id=1046158454]
-position = Vector2(96, -1056)
-scale = Vector2(0.99999994, 0.99999994)
