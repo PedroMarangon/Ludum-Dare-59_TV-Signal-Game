@@ -6,10 +6,10 @@
 [ext_resource type="Shader" uid="uid://do0up1f5a4i4i" path="res://shaders/tv_signal.gdshader" id="3_ewu38"]
 [ext_resource type="Resource" uid="uid://cuunrvnmb6oym" path="res://resources/interest_cartoon.tres" id="3_gefff"]
 [ext_resource type="Resource" uid="uid://c6bpd28kldre7" path="res://resources/interest_cooking.tres" id="4_seoob"]
-[ext_resource type="Resource" uid="uid://beveyt2dp5b3y" path="res://resources/interest_drama.tres" id="5_xb6rf"]
 [ext_resource type="Resource" uid="uid://mnny2q74ljs5" path="res://resources/interest_movie.tres" id="6_s03wv"]
 [ext_resource type="Resource" uid="uid://bdi2y86je80oh" path="res://resources/interest_sports.tres" id="7_tx3su"]
 [ext_resource type="Texture2D" uid="uid://djuy5yvbwang1" path="res://assets/sprites/icons.png" id="8_gefff"]
+[ext_resource type="AudioStream" uid="uid://bo70xpfnb0crf" path="res://assets/sfx/signal.ogg" id="10_gefff"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_aq5bu"]
 shader = ExtResource("3_ewu38")
@@ -19,19 +19,19 @@ shader_parameter/angle_edge = 3.0
 shader_parameter/edge_smoothness = Vector2(0.5, 0.49)
 shader_parameter/ring_frequency = 600.0
 shader_parameter/ring_width = 0.90000004275
-shader_parameter/move_speed = -10.0
+shader_parameter/move_speed = 10.0
 shader_parameter/smooth_edge = true
 shader_parameter/smooth_edge_angle = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e2o6t"]
-size = Vector2(200.00002, 128)
+size = Vector2(320.00006, 320.00006)
 
 [node name="TV_Antenna" type="Node2D" unique_id=1073357383]
 scale = Vector2(0.2, 0.2)
 script = ExtResource("1_usm7i")
 angle = 80.0
 speed = 300.0
-acceptable_interests = Array[ExtResource("2_yj5mq")]([ExtResource("3_gefff"), ExtResource("4_seoob"), ExtResource("5_xb6rf"), ExtResource("6_s03wv"), ExtResource("7_tx3su")])
+acceptable_interests = Array[ExtResource("2_yj5mq")]([ExtResource("3_gefff"), ExtResource("4_seoob"), ExtResource("6_s03wv"), ExtResource("7_tx3su")])
 non_selected_alpha = 0.2
 selected_alpha = 0.5
 
@@ -81,6 +81,18 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Head/HeadSprite/MouseDetection" unique_id=1994333442]
 shape = SubResource("RectangleShape2D_e2o6t")
+
+[node name="SignalAudioStream" type="AudioStreamPlayer" parent="." unique_id=4670866]
+unique_name_in_owner = true
+stream = ExtResource("10_gefff")
+volume_db = -30.0
+autoplay = true
+
+[node name="ChannelAudioStream" type="AudioStreamPlayer" parent="." unique_id=1855719455]
+unique_name_in_owner = true
+volume_db = -30.0
+autoplay = true
+bus = &"Channels"
 
 [connection signal="area_entered" from="Head/TV_SpriteShader/TV_Area2D" to="." method="_on_tv_signal_area_entered"]
 [connection signal="area_exited" from="Head/TV_SpriteShader/TV_Area2D" to="." method="_on_tv_signal_area_exited"]

@@ -49,7 +49,7 @@ func switch_content(interest:Interest) -> void:
 		tween.tween_property(ui, "scale", Vector2.ZERO, 0.5)
 		tween = tween.chain()
 	
-	tween.tween_method(func(): update_progress(0), self, self, 0.1)
+	tween.tween_callback(func(): update_progress(0))
 	tween.tween_property(texture_rect, "texture", interest.icon, 0.1)
 	tween.chain().tween_property(ui, "scale", Vector2.ONE, 0.5)
 	

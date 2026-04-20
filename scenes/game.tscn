@@ -11,6 +11,8 @@
 [ext_resource type="Resource" uid="uid://cuunrvnmb6oym" path="res://resources/interest_cartoon.tres" id="6_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://tqvckvutc3s7" path="res://prefabs/house.tscn" id="9_0tnpc"]
 [ext_resource type="AudioStream" uid="uid://b54pdodvuy534" path="res://assets/sfx/nighttime.ogg" id="12_dinhu"]
+[ext_resource type="PackedScene" uid="uid://ycnlwry8e86q" path="res://scenes/hud.tscn" id="12_kvuet"]
+[ext_resource type="Script" uid="uid://bw5px5amasev7" path="res://scripts/day_logic.gd" id="13_kvuet"]
 
 [sub_resource type="Gradient" id="Gradient_vtaks"]
 offsets = PackedFloat32Array(0.672043, 0.79569894)
@@ -552,3 +554,17 @@ interest = ExtResource("6_0tnpc")
 stream = ExtResource("12_dinhu")
 volume_db = -9.82
 autoplay = true
+
+[node name="CanvasLayer" parent="." unique_id=1795440823 node_paths=PackedStringArray("day_logic") instance=ExtResource("12_kvuet")]
+day_logic = NodePath("../DayLogic")
+
+[node name="DayLogic" type="Node" parent="." unique_id=1821710598]
+script = ExtResource("13_kvuet")
+
+[node name="HourTimer" type="Timer" parent="DayLogic" unique_id=1377064869]
+wait_time = 10.0
+autostart = true
+
+[connection signal="on_day_finished" from="DayLogic" to="CanvasLayer" method="_on_day_logic_on_day_finished"]
+[connection signal="on_hour_passed" from="DayLogic" to="CanvasLayer" method="_on_day_logic_on_hour_passed"]
+[connection signal="timeout" from="DayLogic/HourTimer" to="DayLogic" method="_on_hour_timer_timeout"]

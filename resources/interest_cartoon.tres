@@ -13,4 +13,5 @@ script = ExtResource("1_qh31r")
 interest_name = "Cartoons"
 icon = SubResource("AtlasTexture_3tq7w")
 audio_channel = ExtResource("1_3tq7w")
+volume_selected = 5.0
 metadata/_custom_type_script = "uid://dhg1muh52x5l0"

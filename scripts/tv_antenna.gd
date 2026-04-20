@@ -37,12 +37,13 @@ func _input(event: InputEvent) -> void:
 		var mouse = event as InputEventMouseButton
 		if mouse.is_released() and mouse.button_index == MOUSE_BUTTON_LEFT and is_holding:
 			is_holding = false
+			disable_signal_stream()
+			tween_audio_stream_vol(%ChannelAudioStream, 0 if signal_channels.is_empty() else signal_channels[0].interest.volume_deselected)
 			stopped_holding.emit()
 
 func _process(delta: float) -> void:
 	update_rotation(delta)
 	update_interest_progress(delta)
-
 
 
 func update_rotation(delta:float) -> void:
@@ -77,7 +78,7 @@ func select_random_interest() -> void:
 	set_color(null, false)
 	house.switch_content(current_interest)
 
-
+#region Visuals
 func set_color(interest_channel:InterestChannel, is_entering:bool) -> void:
 	if not is_entering:
 		if signal_channels.is_empty():
@@ -99,12 +100,35 @@ func set_alpha(is_selected:bool) -> void:
 	
 	var tween = get_tree().create_tween()
 	tween.tween_property(tv_signal_sprite, "self_modulate", color, 0.1)
+#endregion
+
+#region Audio
+func enable_signal_stream() -> void:
+	tween_audio_stream_vol(%SignalAudioStream, -20.0)
+func disable_signal_stream() -> void:
+	tween_audio_stream_vol(%SignalAudioStream, -50.0)
+
+func tween_audio_stream_vol(player:AudioStreamPlayer, desired_volume:float) -> Tween:
+	var tween = get_tree().create_tween()
+	tween.tween_property(player, 'volume_db', desired_volume, 0.3)
+	return tween
+	
+func set_channel_stream_vol(interest:Interest, entering:bool) -> void:
+	await tween_audio_stream_vol(%ChannelAudioStream, -80.0).finished
+	%ChannelAudioStream.stop()
+	if entering:
+		%ChannelAudioStream.stream = interest.audio_channel
+		%ChannelAudioStream.play()
+	tween_audio_stream_vol(%ChannelAudioStream, interest.volume_selected)
+#endif
+
 
 #region Signal Connections
 func _on_mouse_detection_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton:
 		var mouse = event as InputEventMouseButton
 		if mouse.pressed and mouse.button_index == MOUSE_BUTTON_LEFT:
+			enable_signal_stream()
 			is_holding = true
 
 func _on_mouse_detection_mouse_entered() -> void:
@@ -120,13 +144,19 @@ func _on_mouse_detection_mouse_exited() -> void:
 
 func _on_tv_signal_area_entered(area: Area2D) -> void:
 	if area is InterestChannel:
-		signal_channels.append(area as InterestChannel)
-		set_color(area as InterestChannel, true)
+		var interest_channel = area as InterestChannel
+		
+		set_channel_stream_vol(interest_channel.interest, true)
+		signal_channels.append(interest_channel)
+		set_color(interest_channel, true)
 
 func _on_tv_signal_area_exited(area: Area2D) -> void:
 	if area is InterestChannel:
-		signal_channels.erase(area as InterestChannel)
-		set_color(area as InterestChannel, false)
+		var interest_channel = area as InterestChannel
+		
+		set_channel_stream_vol(interest_channel.interest, false)
+		signal_channels.erase(interest_channel)
+		set_color(interest_channel, false)
 #endregion
 
 

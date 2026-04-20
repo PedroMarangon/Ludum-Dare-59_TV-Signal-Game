@@ -13,4 +13,6 @@ script = ExtResource("1_t761p")
 interest_name = "Cooking"
 icon = SubResource("AtlasTexture_hkn32")
 audio_channel = ExtResource("1_hkn32")
+volume_selected = 5.0
+volume_deselected = 0.0
 metadata/_custom_type_script = "uid://dhg1muh52x5l0"

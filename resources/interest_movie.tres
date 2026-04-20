@@ -12,4 +12,6 @@ region = Rect2(256, 256, 256, 256)
 script = ExtResource("1_kj5f7")
 icon = SubResource("AtlasTexture_suspm")
 audio_channel = ExtResource("1_32guv")
+volume_selected = 10.0
+volume_deselected = -10.0
 metadata/_custom_type_script = "uid://dhg1muh52x5l0"

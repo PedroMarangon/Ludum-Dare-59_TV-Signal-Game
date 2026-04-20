@@ -9,9 +9,10 @@
 [ext_resource type="Script" uid="uid://ghbst2j2hg3" path="res://scripts/main_menu.gd" id="9_ufwb2"]
 [ext_resource type="PackedScene" uid="uid://blb8kba4uy581" path="res://scenes/game.tscn" id="11_i42df"]
 [ext_resource type="Theme" uid="uid://db58y20hoehp8" path="res://theme.tres" id="12_7jp70"]
+[ext_resource type="Script" uid="uid://bqudvn4qaqk5v" path="res://scripts/remove_on_web_build.gd" id="12_i42df"]
 [ext_resource type="Texture2D" uid="uid://ceecp4u6v3yug" path="res://assets/logos/logo.png" id="13_7jp70"]
 [ext_resource type="Texture2D" uid="uid://cgtxohupn63b0" path="res://assets/logos/logoCompany_WhiteVersion_Border.png" id="14_7jp70"]
-[ext_resource type="Script" uid="uid://cf251xbsa753y" path="res://scripts/ButtonSFX.gd" id="14_g6gyw"]
+[ext_resource type="Script" uid="uid://cf251xbsa753y" path="res://scripts/button_sfx.gd" id="14_g6gyw"]
 [ext_resource type="AudioStream" uid="uid://b54pdodvuy534" path="res://assets/sfx/nighttime.ogg" id="15_7jp70"]
 
 [sub_resource type="Gradient" id="Gradient_vtaks"]
@@ -82,7 +83,7 @@ shader_parameter/cloud_power = 1.0
 shader_parameter/multiply_cloud = true
 shader_parameter/clouds_noise = SubResource("NoiseTexture2D_trtic")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6cdou"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7jp70"]
 resource_local_to_scene = true
 shader = ExtResource("3_i42df")
 shader_parameter/background_color = Color(0, 0, 0, 1)
@@ -176,7 +177,7 @@ modulate = Color(0.18269998, 0.87, 0.4232551, 1)
 visible = false
 
 [node name="Progress" parent="Scenario/Houses/House/UI/NinePatchRect" parent_id_path=PackedInt32Array(1085918880, 761430639) index="0" unique_id=1756235201]
-material = SubResource("ShaderMaterial_6cdou")
+material = SubResource("ShaderMaterial_7jp70")
 
 [node name="Grass" type="Node2D" parent="Scenario" unique_id=1336957973]
 script = SubResource("GDScript_kvpfn")
@@ -632,7 +633,11 @@ text = "Quit"
 script = ExtResource("14_g6gyw")
 metadata/_custom_type_script = "uid://cf251xbsa753y"
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=2040406218]
+[node name="RemoveOnWebBuild" type="Node" parent="CanvasLayer/MenuContainer/MarginContainer/VBoxContainer/QuitBtn" unique_id=1511508293]
+script = ExtResource("12_i42df")
+metadata/_custom_type_script = "uid://bqudvn4qaqk5v"
+
+[node name="MarangonLogo" type="TextureRect" parent="CanvasLayer" unique_id=2040406218]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -654,39 +659,12 @@ anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = 50.0
-offset_top = -260.0
+offset_top = -331.0
 offset_right = 664.0
-offset_bottom = 262.0
+offset_bottom = 343.0
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0, 0.5)
 theme_override_styles/panel = SubResource("StyleBoxFlat_g6gyw")
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/TutorialContainer" unique_id=1470029860]
-layout_mode = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
-
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/TutorialContainer/MarginContainer" unique_id=445512394]
-modulate = Color(0.88235295, 0.99607843, 0.99607843, 1)
-layout_mode = 2
-theme_override_font_sizes/normal_font_size = 24
-theme_override_font_sizes/bold_font_size = 24
-theme_override_font_sizes/bold_italics_font_size = 24
-theme_override_font_sizes/italics_font_size = 24
-theme_override_font_sizes/mono_font_size = 24
-bbcode_enabled = true
-text = "[font_size=48][center][b]HOW TO PLAY[/b][/center][/font_size]
-
-
-[ul] Different houses periodically want to watch certain [color=#ffcc00]Channels.[/color] [/ul]
-[ul] [color=#99ccff][b]Click and Drag[/b][/color] the antenna horizontally to point at the [color=#ffcc00]channel.[/color] [/ul]
-
-       [font_size=32][b]Signal Colors[/b][/font_size]
-[ul] [color=red][b]Red Signal[/b][/color]: Wrong [color=#ffcc00]channel[/color] Signal [/ul]
-[ul] [color=green][b]Green Signal[/b][/color]: Correct [color=#ffcc00]channel[/color] Signal [/ul]
-[ul] [color=white][b]White Signal[/b][/color]: No [color=#ffcc00]channel[/color] Signal [/ul]"
 
 [node name="Control" type="Control" parent="CanvasLayer/TutorialContainer" unique_id=1432360204]
 layout_mode = 2
@@ -696,17 +674,45 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -224.0
-offset_top = 517.0
-offset_right = -27.0
-offset_bottom = 583.0
+offset_left = -20.0
+offset_top = -38.0
+offset_right = 67.0
+offset_bottom = 28.0
 grow_horizontal = 0
 theme = ExtResource("12_7jp70")
-text = "Close"
+text = "X"
 
 [node name="ButtonSFX" type="Node" parent="CanvasLayer/TutorialContainer/Control/Button" unique_id=380679173]
 script = ExtResource("14_g6gyw")
 metadata/_custom_type_script = "uid://cf251xbsa753y"
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/TutorialContainer" unique_id=1470029860]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/TutorialContainer/MarginContainer" unique_id=445512394]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+theme_override_font_sizes/bold_italics_font_size = 24
+theme_override_font_sizes/italics_font_size = 24
+theme_override_font_sizes/mono_font_size = 24
+bbcode_enabled = true
+text = "[color=e3ffff][font_size=48][center][b]HOW TO PLAY[/b][/center][/font_size]
+
+[ul] Different houses periodically want to watch certain [color=#FFFF00]Channels.[/color] [/ul]
+[ul] [color=#99ccff][b]Click and Drag[/b][/color] the antenna horizontally to point at the [color=#FFFF00]channel.[/color] [/ul]
+[ul]Work from 08 PM to 06 AM delivering the correct channel signals![/ul]
+
+       [font_size=24][b]SIGNAL COLORS[/b][/font_size]
+[ul] [color=red][b]Red Signal[/b][/color]: Wrong [color=#FFFF00]channel[/color] Signal [/ul]
+[ul] [color=green][b]Green Signal[/b][/color]: Correct [color=#FFFF00]channel[/color] Signal [/ul]
+[ul] [color=white][b]White Signal[/b][/color]: No [color=#FFFF00]channel[/color] Signal [/ul]
+[/color]
+"
 
 [node name="Nighttime" type="AudioStreamPlayer" parent="." unique_id=521353391]
 stream = ExtResource("15_7jp70")

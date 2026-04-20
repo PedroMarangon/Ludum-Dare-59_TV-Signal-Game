@@ -1,7 +1,6 @@
 class_name MainMenu extends CanvasLayer
 
 
-@export var scene_to_load :PackedScene
 @onready var tutorial_container: PanelContainer = %TutorialContainer
 
 
@@ -11,9 +10,13 @@ class_name MainMenu extends CanvasLayer
 
 var tween :Tween
 
+const TUT_IN_SCREEN :float = 50.0
+const TUT_OUT_SCREEN :float = -700.0
+
 
 func _ready() -> void:
-	tutorial_container.position.x = -650.0
+	get_tree().paused = false
+	tutorial_container.position.x = TUT_OUT_SCREEN
 
 func _process(_delta: float) -> void:
 	if %TextureRect == null:
@@ -31,18 +34,18 @@ func move_tutorial(target_pos:float) -> void:
 
 #region Buttons
 func _on_play_btn_pressed() -> void:
-	get_tree().change_scene_to_packed(scene_to_load)
+	get_tree().change_scene_to_file("res://scenes/game.tscn")
 
 func _on_tutorial_btn_pressed() -> void:
-	if tutorial_container.position.x == -650:
-		move_tutorial(50.0)
+	if tutorial_container.position.x == TUT_OUT_SCREEN:
+		move_tutorial(TUT_IN_SCREEN)
 	else:
-		move_tutorial(-650.0)
+		move_tutorial(TUT_OUT_SCREEN)
 
 func _on_quit_btn_pressed() -> void:
 	get_tree().exit()
 
 
 func _on_close_btn_pressed() -> void:
-	move_tutorial(-650.0)
+	move_tutorial(TUT_OUT_SCREEN)
 #endregion

@@ -8,6 +8,9 @@
 *.aup3-shm
 *.aup3-wal
 
+#Ludum Dare
+.ludum
+
 # Godot-specific ignores
 .import/
 export.cfg

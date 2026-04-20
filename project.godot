@@ -16,6 +16,10 @@ run/main_scene="uid://bb6lddk7ogrii"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="uid://n886cdhmdufr"
 
+[audio]
+
+buses/default_bus_layout="uid://fs7mb7imn33b"
+
 [display]
 
 window/size/viewport_width=1280

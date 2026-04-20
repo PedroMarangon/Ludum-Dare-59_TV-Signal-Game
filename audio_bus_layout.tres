@@ -1,0 +1,57 @@
+[gd_resource type="AudioBusLayout" format=3 uid="uid://fs7mb7imn33b"]
+
+[sub_resource type="AudioEffectHighPassFilter" id="AudioEffectHighPassFilter_f4lrx"]
+resource_name = "HighPassFilter"
+cutoff_hz = 20500.0
+resonance = 1.0
+db = 3
+
+[sub_resource type="AudioEffectEQ" id="AudioEffectEQ_f4lrx"]
+resource_name = "EQ"
+band_db/32_hz = -35.2
+band_db/100_hz = -45.5
+band_db/320_hz = -38.1
+band_db/1000_hz = -28.9
+band_db/3200_hz = -19.0
+band_db/10000_hz = -15.2
+
+[sub_resource type="AudioEffectSpectrumAnalyzer" id="AudioEffectSpectrumAnalyzer_f4lrx"]
+resource_name = "SpectrumAnalyzer"
+
+[sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_f4lrx"]
+resource_name = "Compressor"
+threshold = -22.9
+ratio = 27.4
+gain = -4.8
+attack_us = 445.0
+release_ms = 777.0
+
+[sub_resource type="AudioEffectPitchShift" id="AudioEffectPitchShift_f4lrx"]
+resource_name = "PitchShift"
+pitch_scale = 0.45
+oversampling = 30
+
+[sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_f4lrx"]
+resource_name = "LowPassFilter"
+cutoff_hz = 7102.0
+resonance = 0.81
+
+[resource]
+bus/1/name = &"Channels"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = -9.204511
+bus/1/send = &"Master"
+bus/1/effect/0/effect = SubResource("AudioEffectHighPassFilter_f4lrx")
+bus/1/effect/0/enabled = false
+bus/1/effect/1/effect = SubResource("AudioEffectEQ_f4lrx")
+bus/1/effect/1/enabled = false
+bus/1/effect/2/effect = SubResource("AudioEffectSpectrumAnalyzer_f4lrx")
+bus/1/effect/2/enabled = false
+bus/1/effect/3/effect = SubResource("AudioEffectCompressor_f4lrx")
+bus/1/effect/3/enabled = false
+bus/1/effect/4/effect = SubResource("AudioEffectPitchShift_f4lrx")
+bus/1/effect/4/enabled = false
+bus/1/effect/5/effect = SubResource("AudioEffectLowPassFilter_f4lrx")
+bus/1/effect/5/enabled = true
